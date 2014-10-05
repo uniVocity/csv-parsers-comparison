@@ -25,7 +25,8 @@ This is the list of all parsers tested:
 | SimpleCSV                    |       2.0 | [github.com/quux00/simplecsv](https://github.com/quux00/simplecsv)                     |
 | gj-csv                       |       1.0 | ?                                                                                      |
 | esperio-csv                  |    4.11.0 | [www.espertech.com](http://www.espertech.com/)                                         |
-| way-io                       |     1.6.0 | [http://www.objectos.com.br](http://www.objectos.com.br/)                              |
+| way-io                       |     1.6.0 | [www.objectos.com.br](http://www.objectos.com.br/)                              |
+| beanIO                       |     2.1.0 | [beanio.org](http://beanio.org/)                              |
 
 
 ## Statistics
@@ -53,7 +54,8 @@ These are the statistics I got after processing 3,173,958 rows:
 |Gen-Java CSV                                |  9940 ms           | 371%               | 9825 ms   | 10229 ms   |
 
  * `Esperio-csv` and `CSVeed` were unable to process the file and threw exceptions.
- * `Flatpack` hanged so I had to remove it from the test [here](./src/main/java/com/univocity/articles/csvcomparison/parser/Parsers.java). 
+ * `Flatpack` hanged so I had to remove it from the test [here](./src/main/java/com/univocity/articles/csvcomparison/parser/Parsers.java).
+ * `BeanIO` threw an exception I could understand and debug. Turns out it is unable to parse fields when the quote character is part of the value, e.g. `value1, val"ue2, value3 `. 
 
 *Note* [uniVocity-parsers](http://github.com/uniVocity/univocity-parsers/) provides an option to select the fields you are interested in, and our parsers will execute faster by not processing values that are not selected. As it can be seen in the results above, it makes quite a difference in performance.
 
