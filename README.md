@@ -75,6 +75,7 @@ The following parsers were unable to process the [RFC 4180](https://www.rfc-edit
 |Simple CSV parser                           | Simple CSV parser threw exception The separator, quote, and escape characters must be different! |
 |Way IO Parser                               | Way IO Parser threw exception Could not convert  to class java.lang.String |
 |Gen-Java CSV                                | Gen-Java CSV produced 7 rows instead of 6 |
+|Flatpack									 | Flatpack produced 5 rows instead of 6 |
 
 ## Conclusion
 
