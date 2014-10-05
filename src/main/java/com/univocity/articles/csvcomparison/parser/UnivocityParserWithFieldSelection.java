@@ -15,31 +15,39 @@
  ******************************************************************************/
 package com.univocity.articles.csvcomparison.parser;
 
+import java.io.*;
 import java.util.*;
 
-public class Parsers {
+import com.univocity.parsers.csv.*;
 
-	private static final List<AbstractParser> parsers = Arrays.asList(
-			new CSVeedParser(),
-			new CommonsCsvParser(),
-			new EsperioCsvParser(),
-			//new FlatpackParser(), appears to hang while processing worldcitiespop.txt
-			new GenJavaParser(),
-			new JavaCsvParser(),
-			new JCsvParser(),
-			new OpenCsvParser(),
-			new SimpleCsvParser(),
-			new SuperCsvParser(),
-			new UnivocityParser(),
-			new UnivocityParserWithFieldSelection(),
-			new WayIoParser()
-			);
+class UnivocityParserWithFieldSelection extends AbstractParser {
 
-	private Parsers() {
-
+	protected UnivocityParserWithFieldSelection() {
+		super("uniVocity CSV parser - with field selection");
 	}
 
-	public static List<AbstractParser> list() {
-		return Collections.unmodifiableList(parsers);
+	@Override
+	public int countRows(File input) {
+		CsvParserSettings settings = new CsvParserSettings();
+		settings.selectIndexes(2); // selected field at index 2. Values for other columns are simply skipped.
+		CsvParser parser = new CsvParser(settings);
+
+		parser.beginParsing(toReader(input));
+
+		int count = 0;
+		while (parser.parseNext() != null) {
+			count++;
+		}
+		return count;
 	}
+
+	@Override
+	public List<String[]> parseRows(File input) {
+
+		CsvParserSettings settings = new CsvParserSettings();
+		CsvParser parser = new CsvParser(settings);
+
+		return parser.parseAll(toReader(input));
+	}
+
 }

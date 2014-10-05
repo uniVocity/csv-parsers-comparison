@@ -101,27 +101,29 @@ public class PerformanceComparison {
 		System.out.println("\n=========\n AVERAGES \n=========\n");
 
 		Map<Long, String> averages = orderByAverageTime(stats);
-		long previousTime = 0;
+		long bestTime = 0;
 		for (Entry<Long, String> average : averages.entrySet()) {
 			long time = average.getKey();
 			String parser = average.getValue();
-			System.out.print(parser + "\t - " + time + " ms.");
+			System.out.print(parser + "\n\t- " + time + " ms.");
 
 			if (time == -1) {
 				System.out.println("Could not execute");
 				continue;
 			}
 
-			if (previousTime != 0) {
-				long increasePercentage = time * 100 / previousTime;
-				System.out.print("+" + increasePercentage + "%");
+			if (bestTime != 0) {
+				long increasePercentage = time * 100 / bestTime - 100;
+				System.out.print(" " + increasePercentage + "% slower than best");
+			} else {
+				bestTime = time;
+				System.out.print("Best time!");
 			}
-			previousTime = time;
 
 			long best = getBestTime(stats.get(parser));
 			long worst = getWorstTime(stats.get(parser));
 
-			System.out.println("\t(Best: " + best + " ms. Worst: " + worst + " ms.)");
+			System.out.println("(Best: " + best + " ms. Worst: " + worst + " ms.)");
 		}
 	}
 
