@@ -1,0 +1,7 @@
+<configuration>
+
+
+	<root level="error">
+		<appender-ref ref="STDOUT" />
+	</root>
+</configuration>

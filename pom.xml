@@ -1,0 +1,139 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.univocity</groupId>
+	<artifactId>csv-parsers-comparison</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<name>csv-parsers-comparison</name>
+
+	<description>A comparison among different CSV parsers for Java</description>
+
+	<organization>
+		<name>uniVocity Software Pty Ltd</name>
+		<url>www.univocity.com</url>
+	</organization>
+
+	<url>http://github.com/uniVocity/csv-parsers-comparison</url>
+
+	<licenses>
+		<license>
+			<name>Apache 2</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+			<comments>A business-friendly OSS license</comments>
+		</license>
+	</licenses>
+
+
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/uniVocity/csv-parsers-comparison/issues</url>
+	</issueManagement>
+
+	<scm>
+		<url>https://github.com/uniVocity/csv-parsers-comparison</url>
+		<connection>scm:git:git://github.com/uniVocity/csv-parsers-comparison.git</connection>
+		<developerConnection>scm:git:git@github.com:uniVocity/csv-parsers-comparison.git</developerConnection>
+	</scm>
+
+	<developers>
+		<developer>
+			<id>jbax</id>
+			<name>Jeronimo Backes</name>
+			<email>jbax@univocity.com</email>
+			<timezone>+9:30</timezone>
+		</developer>
+
+		<developer>
+			<id>dev</id>
+			<name>uniVocity development team</name>
+			<email>dev@univocity.com</email>
+		</developer>
+	</developers>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>com.univocity</groupId>
+			<artifactId>univocity-parsers</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.csveed</groupId>
+			<artifactId>csveed</artifactId>
+			<version>0.4.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-csv</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sf.flatpack</groupId>
+			<artifactId>flatpack</artifactId>
+			<version>3.4.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sf.supercsv</groupId>
+			<artifactId>super-csv</artifactId>
+			<version>2.2.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.googlecode.jcsv</groupId>
+			<artifactId>jcsv</artifactId>
+			<version>1.4.0</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>net.sourceforge.javacsv</groupId>
+			<artifactId>javacsv</artifactId>
+			<version>2.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.espertech</groupId>
+			<artifactId>esperio-csv</artifactId>
+			<version>4.11.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>br.com.objectos</groupId>
+			<artifactId>way-io</artifactId>
+			<version>1.6.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sf.opencsv</groupId>
+			<artifactId>opencsv</artifactId>
+			<version>2.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>genjava</groupId>
+			<artifactId>gj-csv</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.quux00.simplecsv</groupId>
+			<artifactId>simplecsv</artifactId>
+			<version>2.0</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>jdom</groupId>
+			<artifactId>jdom</artifactId>
+			<version>1.0</version>
+		</dependency>
+	</dependencies>
+</project>
