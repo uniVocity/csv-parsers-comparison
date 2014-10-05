@@ -21,6 +21,7 @@ public class Parsers {
 
 	private static final List<AbstractParser> parsers = Arrays.asList(
 			new CSVeedParser(),
+			new BeanIoParser(),
 			new CommonsCsvParser(),
 			new EsperioCsvParser(),
 			//new FlatpackParser(), appears to hang while processing worldcitiespop.txt
