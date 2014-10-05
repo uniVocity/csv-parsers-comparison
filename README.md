@@ -10,7 +10,7 @@ Our test is very simple and involves just counting the number of rows read from 
 
 ## CSV Parsers
 
-This is the list of all parsers tested:
+This is the list of all parsers tested. Parsers follows by * are commercial an their jars are not included in this project. You have to download them independently:
 
 | Parser                       |   Version | Website                                              |
 |------------------------------|----------:|------------------------------------------------------|
@@ -27,9 +27,11 @@ This is the list of all parsers tested:
 | esperio-csv                  |    4.11.0 | [www.espertech.com](http://www.espertech.com/)                                         |
 | way-io                       |     1.6.0 | [www.objectos.com.br](http://www.objectos.com.br/)                              |
 | beanIO                       |     2.1.0 | [beanio.org](http://beanio.org/)                              |
+| DataPipeline's CSVReader*    |     2.3.4 | [northconcepts.com/data-pipeline/](http://northconcepts.com/data-pipeline/)   |
 
 
-## Statistics
+
+## Statistics (updated 6th of October, 2014)
 
 Results will vary depending on your setup and hardware. For reference, here's my (very) modest hardware, an ultrabook: 
 
@@ -42,22 +44,37 @@ These are the statistics I got after processing 3,173,958 rows:
 
 | Parser                                     | Average time       | % Slower than best | Best time | Worst time |
 |--------------------------------------------|-------------------:|-------------------:|----------:|-----------:|
-|uniVocity CSV parser - with field selection |  2108 ms           | BEST!              | 2019 ms   | 2162 ms    |
-|uniVocity CSV parser                        |  2748 ms           | 30%                | 2703 ms   | 2806 ms    |
-|OpenCSV                                     |  3431 ms           | 62%                | 3366 ms   | 3571 ms    |
-|jCSV Parser                                 |  3472 ms           | 64%                | 3395 ms   | 3522 ms    |
-|JavaCSV Parser                              |  3531 ms           | 67%                | 3379 ms   | 3640 ms    |
-|Simple CSV parser                           |  3921 ms           | 86%                | 3635 ms   | 4107 ms    |
-|SuperCSV                                    |  4189 ms           | 98%                | 4126 ms   | 4242 ms    |
-|Apache Commons CSV                          |  4293 ms           | 103%               | 4175 ms   | 4431 ms    |
-|Way IO Parser                               |  4949 ms           | 134%               | 4839 ms   | 5058 ms    |
-|Gen-Java CSV                                |  9940 ms           | 371%               | 9825 ms   | 10229 ms   |
+|uniVocity CSV parser - with field selection |  1492 ms           | BEST!              | 1458 ms   | 1593 ms    |
+|uniVocity CSV parser                        |  1871 ms           | 25%                | 1825 ms   | 1966 ms    |
+|OpenCSV                                     |  2294 ms           | 53%                | 2271 ms   | 2371 ms    |
+|JavaCSV Parser                              |  2380 ms           | 59%                | 2362 ms   | 2410 ms    |
+|jCSV Parser                                 |  2415 ms           | 61%                | 2375 ms   | 2489 ms    |
+|DataPipeline's CSVReader					 |	2442 ms  		  |	63%				   | 2376 ms   | 2591 ms	|
+|Simple CSV parser                           |  2600 ms           | 74%                | 2535 ms   | 2686 ms    |
+|SuperCSV                                    |  2658 ms           | 78%                | 2613 ms   | 2752 ms    |
+|Apache Commons CSV                          |  2800 ms           | 87%                | 2771 ms   | 2836 ms    |
+|Way IO Parser                               |  3329 ms           | 123%               | 3238 ms   | 3418 ms    |
+|Gen-Java CSV                                |  6145 ms           | 311%               | 6064 ms   | 6257 ms    |
 
  * `Esperio-csv` and `CSVeed` were unable to process the file and threw exceptions.
  * `Flatpack` hanged so I had to remove it from the test [here](./src/main/java/com/univocity/articles/csvcomparison/parser/Parsers.java).
  * `BeanIO` threw an exception I could understand and debug. Turns out it is unable to parse fields when the quote character is part of the value, e.g. `value1, val"ue2, value3 `. 
 
 *Note* [uniVocity-parsers](http://github.com/uniVocity/univocity-parsers/) provides an option to select the fields you are interested in, and our parsers will execute faster by not processing values that are not selected. As it can be seen in the results above, it makes quite a difference in performance.
+
+*Note (2)* The previous results were discarded after I discovered a zombie process running on the background. Nevertheless, the performance difference results were similar in percentage terms.
+
+## Reliability (updated 6th of October, 2014)
+
+The following parsers were unable to process the [RFC 4180](https://www.rfc-editor.org/rfc/rfc4180.txt) compliant file [correctness.csv](./src/main/resources/correctness.csv). This test is executed using the class [CorrectnessComparison.java](./src/main/java/com/univocity/articles/csvcomparison/CorrectnessComparison.java)
+
+| Parser                                     | Error |
+|--------------------------------------------|:------|
+|CSVeed										 | CSVeed threw exception Illegal state transition: Parsing symbol QUOTE_SYMBOL [34] in state INSIDE_FIELD |
+|jCSV Parser                                 | JCSV Parser produced ["Year,Make,Model,Description,Price"] instead of ["Year", "Make", "Model", "Description", "Price"] |
+|Simple CSV parser                           | Simple CSV parser threw exception The separator, quote, and escape characters must be different! |
+|Way IO Parser                               | Way IO Parser threw exception Could not convert  to class java.lang.String |
+|Gen-Java CSV                                | Gen-Java CSV produced 7 rows instead of 6 |
 
 ## Conclusion
 

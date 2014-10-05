@@ -23,6 +23,7 @@ public class Parsers {
 			new CSVeedParser(),
 			new BeanIoParser(),
 			new CommonsCsvParser(),
+			//new DataPipelineCsvParser(), // commercial, depends on license. I can't include on github.
 			new EsperioCsvParser(),
 			//new FlatpackParser(), appears to hang while processing worldcitiespop.txt
 			new GenJavaParser(),
