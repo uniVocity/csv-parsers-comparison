@@ -87,8 +87,8 @@ public class PerformanceComparison {
 		for (Entry<Long, String> average : averages.entrySet()) {
 			long time = average.getKey();
 			String parser = average.getValue();
-			System.out.print(parser + "\n\t- " + time + " ms.");
-
+			System.out.print("| " + parser + " \t | " + time + " ms ");
+			
 			if (time == -1) {
 				System.out.println("Could not execute");
 				continue;
@@ -96,16 +96,16 @@ public class PerformanceComparison {
 
 			if (bestTime != 0) {
 				long increasePercentage = time * 100 / bestTime - 100;
-				System.out.print(" " + increasePercentage + "% slower than best");
+				System.out.print(" \t | " + increasePercentage + "% ");
 			} else {
 				bestTime = time;
-				System.out.print("Best time!");
+				System.out.print(" \t | Best time! ");
 			}
 
 			long best = getBestTime(stats.get(parser));
 			long worst = getWorstTime(stats.get(parser));
 
-			System.out.println("(Best: " + best + " ms. Worst: " + worst + " ms.)");
+			System.out.println(" \t | " + best + " ms \t | " + worst + " ms |");
 		}
 	}
 
@@ -143,16 +143,24 @@ public class PerformanceComparison {
 		new PerformanceComparison(input).execute(loops);
 
 		File hugeInput = new File("src/main/resources/worldcitiespop_huge.txt");
+		
+		
 		//executes only if the file has not been generated yet.
-		//creates a huge file with the original input, replicated 15 times. All fields enclosed within quotes.
-		//this generates a file with 47,609,385 rows
-		HugeFileGenerator.generateHugeFile(input, 15, hugeInput);
+		
+		
+		//Previously, we created a huge file with the original input, replicated 15 times. All fields enclosed within quotes.
+		//It would generate a file with 47,609,385 rows
+		
+		//Now, creates a copy of the original input. All fields enclosed within quotes. 
+		//Overall performance is the similar in percentage terms, regardless of size. No point in melting our CPU's to get the same result.
+		
+		HugeFileGenerator.generateHugeFile(input, 1, hugeInput);
 
 		System.out.println("==================================");
 		System.out.println("=== Processing huge input file ===");
 		System.out.println("==================================");
 
-		//now we are talking - this is going to take a lot of time to run
+		
 		new PerformanceComparison(hugeInput).execute(loops);
 	}
 
