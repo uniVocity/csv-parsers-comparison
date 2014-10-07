@@ -57,17 +57,20 @@ Results will vary depending on your setup and hardware. For reference, here's my
 
 | Parser                                     | Average time       | % Slower than best | Best time | Worst time |
 |--------------------------------------------|-------------------:|-------------------:|----------:|-----------:|
-| Jackson CSV parser 	 | 1741 ms  	 | Best time!  	 | 1689 ms 	 | 1901 ms |
-| uniVocity CSV parser 	 | 1924 ms  	 | 10%  	 | 1836 ms 	 | 2089 ms |
-| OpenCSV 	 | 2461 ms  	 | 41%  	 | 2365 ms 	 | 2611 ms |
-| Java CSV Parser 	 | 2517 ms  	 | 44%  	 | 2435 ms 	 | 2639 ms |
-| JCSV Parser 	 | 2556 ms  	 | 46%  	 | 2499 ms 	 | 2634 ms |
-| Simple CSV parser 	 | 2766 ms  	 | 58%  	 | 2589 ms 	 | 2855 ms |
-| Oster Miller CSV parser 	 | 2836 ms  	 | 62%  	 | 2680 ms 	 | 3085 ms |
-| Apache Commons CSV 	 | 3102 ms  	 | 78%  	 | 3005 ms 	 | 3226 ms |
-| Way IO Parser 	 | 3646 ms  	 | 109%  	 | 3559 ms 	 | 3858 ms |
-| SuperCSV 	 | 3892 ms  	 | 123%  	 | 3482 ms 	 | 4301 ms |
-| Gen-Java CSV 	 | 6715 ms  	 | 285%  	 | 6491 ms 	 | 6864 ms |
+| uniVocity CSV parser 	 | 2163 ms  	 | Best time!  	 | 2096 ms 	 | 2289 ms |
+| Jackson CSV parser 	 | 2406 ms  	 | 11%  	 | 2382 ms 	 | 2425 ms |
+| Data pipeline 	 | 2847 ms  	 | 31%  	 | 2747 ms 	 | 2997 ms |
+| JCSV Parser 	 | 3113 ms  	 | 43%  	 | 3038 ms 	 | 3167 ms |
+| OpenCSV 	 | 3180 ms  	 | 47%  	 | 3108 ms 	 | 3273 ms |
+| SuperCSV 	 | 3370 ms  	 | 55%  	 | 3218 ms 	 | 3473 ms |
+| Java CSV Parser 	 | 3373 ms  	 | 55%  	 | 3204 ms 	 | 3569 ms |
+| Simple CSV parser 	 | 3583 ms  	 | 65%  	 | 3398 ms 	 | 3766 ms |
+| Oster Miller CSV parser 	 | 3667 ms  	 | 69%  	 | 3592 ms 	 | 3748 ms |
+| Apache Commons CSV 	 | 3983 ms  	 | 84%  	 | 3818 ms 	 | 4153 ms |
+| Way IO Parser 	 | 4105 ms  	 | 89%  	 | 4030 ms 	 | 4146 ms |
+| Esperio CSV parser 	 | 5094 ms  	 | 135%  	 | 4929 ms 	 | 5372 ms |
+| Gen-Java CSV 	 | 9459 ms  	 | 337%  	 | 9198 ms 	 | 9681 ms |
+| Bean IO Parser 	 | 11247 ms  	 | 419%  	 | 11027 ms 	 | 11530 ms |
 
  * `Esperio-csv` and `CSVeed` were unable to process the file and threw exceptions.
  * `Flatpack` hanged so I had to remove it from the test [here](./src/main/java/com/univocity/articles/csvcomparison/parser/Parsers.java).
