@@ -183,11 +183,5 @@
 			<version>2.4.2</version>
 		</dependency>
 
-		<dependency>
-			<groupId>com.github.arnaudroger</groupId>
-			<artifactId>simpleFlatMapper</artifactId>
-			<version>0.9.8-SNAPSHOT</version>
-		</dependency>
-
 	</dependencies>
 </project>
