@@ -33,7 +33,7 @@ public class Parsers {
 			new SimpleCsvParser(),
 			new SuperCsvParser(),
 			new UnivocityParser(),
-			new UnivocityParserWithFieldSelection(),
+			//new UnivocityParserWithFieldSelection(), //removing this one as it is not a fair comparison
 			new WayIoParser(),
 			new OsterMillerParser(),
 			new JacksonParser()
