@@ -28,16 +28,11 @@ class JCsvParser extends AbstractParser {
 	}
 
 	@Override
-	public int countRows(File input) throws Exception {
-		int count = 0;
+	public void processRows(File input) throws Exception {
 
 		CSVReader<String[]> reader = CSVReaderBuilder.newDefaultReader(toReader(input));
 
-		while (reader.readNext() != null) {
-			count++;
-		}
-
-		return count;
+		while (process(reader.readNext()));
 	}
 
 	@Override

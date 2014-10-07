@@ -27,14 +27,9 @@ class CSVeedParser extends AbstractParser {
 	}
 
 	@Override
-	public int countRows(File input) throws Exception {
-		int count = 0;
-
+	public void processRows(File input) throws Exception {
 		CsvClient<Row> parser = new CsvClientImpl<Row>(toReader(input));
-		while (parser.readRow() != null) {
-			count++;
-		}
-		return count;
+		while (process(parser.readRow()));
 	}
 
 	@Override

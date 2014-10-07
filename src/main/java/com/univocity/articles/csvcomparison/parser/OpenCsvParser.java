@@ -27,14 +27,10 @@ class OpenCsvParser extends AbstractParser {
 	}
 
 	@Override
-	public int countRows(File input) throws Exception {
+	public void processRows(File input) throws Exception {
 		CSVReader reader = new CSVReader(toReader(input));
 		try {
-			int count = 0;
-			while (reader.readNext() != null) {
-				count++;
-			}
-			return count;
+			while (process(reader.readNext()));
 		} finally {
 			reader.close();
 		}

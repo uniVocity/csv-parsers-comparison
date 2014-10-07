@@ -3,7 +3,8 @@
  *
  * Once obtain this library, add it to your classpath locally.
  */
-/*package com.univocity.articles.csvcomparison.parser;
+/*
+package com.univocity.articles.csvcomparison.parser;
 
 import java.io.*;
 import java.util.*;
@@ -18,18 +19,13 @@ public class DataPipelineCsvParser extends AbstractParser {
 	}
 
 	@Override
-	public int countRows(File input) throws Exception {
-		int count = 0;
+	public void processRows(File input) throws Exception {
 
 		DataReader reader = new CSVReader(input).setFieldNamesInFirstRow(true);
-
 		reader.open();
-		while (reader.read() != null) {
-			count++;
-		}
+		while (process(reader.read()));
 		reader.close();
 
-		return count;
 	}
 
 	@Override

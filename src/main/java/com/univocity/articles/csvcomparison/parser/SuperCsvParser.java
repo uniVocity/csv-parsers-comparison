@@ -28,22 +28,17 @@ class SuperCsvParser extends AbstractParser {
 	}
 
 	@Override
-	public int countRows(File input) throws Exception {
-		int count = 0;
+	public void processRows(File input) throws Exception {
 		ICsvListReader listReader = new CsvListReader(toReader(input), CsvPreference.STANDARD_PREFERENCE);
 		try {
 			listReader.getHeader(true);
-			while (listReader.read() != null) {
-				count++;
-			}
+			while (process(listReader.read()));
 
 		} finally {
 			if (listReader != null) {
 				listReader.close();
 			}
 		}
-
-		return count;
 	}
 
 	@Override

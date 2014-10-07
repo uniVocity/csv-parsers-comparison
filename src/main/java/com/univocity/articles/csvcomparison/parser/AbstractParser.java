@@ -22,6 +22,8 @@ import java.util.*;
 public abstract class AbstractParser {
 
 	private final String name;
+	private int rowCount;
+	private int blackhole; //something to keep values from processed objects to avoid unwanted JIT's dead code removal
 
 	protected AbstractParser(String name) {
 		this.name = name;
@@ -31,6 +33,24 @@ public abstract class AbstractParser {
 		return name;
 	}
 
+	
+	protected boolean process(Object row) {
+		if(row == null){
+			return false;
+		}
+		blackhole +=  System.identityHashCode(row);
+		rowCount++;
+		return true;
+	}
+
+	public int getRowCount() {
+		return rowCount;
+	}
+
+	public String getBlackhole(){
+		return String.valueOf(blackhole);
+	}
+	
 	protected Reader toReader(File input) {
 		try {
 			return new FileReader(input);
@@ -47,7 +67,7 @@ public abstract class AbstractParser {
 		return "ISO-8859-1";
 	}
 
-	public abstract int countRows(File input) throws Exception;
+	public abstract void processRows(File input) throws Exception;
 
 	public abstract List<String[]> parseRows(File input) throws Exception;
 

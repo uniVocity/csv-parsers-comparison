@@ -15,21 +15,17 @@ public class JacksonParser extends AbstractParser {
 	}
 
 	@Override
-	public int countRows(final File input) throws Exception {
+	public void processRows(final File input) throws Exception {
 
 		CsvMapper csvMapper = new CsvMapper();
 		csvMapper.enable(CsvParser.Feature.WRAP_AS_ARRAY);
 
-		int count = 0;
-
 		MappingIterator<String[]> iterator = csvMapper.reader(String[].class).readValues(input);
 
 		while (iterator.hasNext()) {
-			iterator.next();
-			count++;
+			process(iterator.next());
 		}
 
-		return count;
 	}
 
 	@Override

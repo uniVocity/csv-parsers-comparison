@@ -18,6 +18,8 @@ package com.univocity.articles.csvcomparison.parser;
 import java.io.*;
 import java.util.*;
 
+import com.univocity.parsers.common.*;
+import com.univocity.parsers.common.processor.*;
 import com.univocity.parsers.csv.*;
 
 class UnivocityParser extends AbstractParser {
@@ -27,17 +29,24 @@ class UnivocityParser extends AbstractParser {
 	}
 
 	@Override
-	public int countRows(File input) {
+	public void processRows(File input) {
 		CsvParserSettings settings = new CsvParserSettings();
+		
+		//turning off features enabled by default
+		settings.setIgnoreLeadingWhitespaces(false);
+		settings.setIgnoreTrailingWhitespaces(false);
+		settings.setSkipEmptyLines(false);
+		settings.setColumnReorderingEnabled(false);
+
+		settings.setRowProcessor(new AbstractRowProcessor() {
+			@Override
+			public void rowProcessed(String[] row, ParsingContext context) {
+				process(row);
+			}
+		});
+		
 		CsvParser parser = new CsvParser(settings);
-
-		parser.beginParsing(toReader(input));
-
-		int count = 0;
-		while (parser.parseNext() != null) {
-			count++;
-		}
-		return count;
+		parser.parse(toReader(input));
 	}
 
 	@Override

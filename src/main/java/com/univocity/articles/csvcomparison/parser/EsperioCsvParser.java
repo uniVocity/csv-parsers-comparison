@@ -28,19 +28,15 @@ class EsperioCsvParser extends AbstractParser {
 	}
 
 	@Override
-	public int countRows(File input) throws Exception {
-		int count = 0;
+	public void processRows(File input) throws Exception {
 
 		AdapterInputSource adapterInputSource = new AdapterInputSource(input);
 		CSVReader reader = new CSVReader(adapterInputSource);
 		try {
-			while (reader.getNextRecord() != null) {
-				count++;
-			}
+			while (process(reader.getNextRecord()));
 		} catch (EOFException ex) {
 			//end of file, return... lovely implementation
 		}
-		return count;
 	}
 
 	@Override

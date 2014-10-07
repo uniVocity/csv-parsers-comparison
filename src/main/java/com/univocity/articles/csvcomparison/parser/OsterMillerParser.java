@@ -15,16 +15,10 @@ public class OsterMillerParser extends AbstractParser {
 	}
 
 	@Override
-	public int countRows(final File input) throws Exception {
-
-		int count = 0;
+	public void processRows(final File input) throws Exception {
 
 		CSVParse csvParser = new ExcelCSVParser(toReader(input));
-		while (csvParser.getLine() != null) {
-			count++;
-		}
-
-		return count;
+		while (process(csvParser.getLine()));
 	}
 
 	@Override

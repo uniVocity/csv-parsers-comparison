@@ -27,16 +27,11 @@ class FlatpackParser extends AbstractParser {
 	}
 
 	@Override
-	public int countRows(File input) throws Exception {
-		int count = 0;
+	public void processRows(File input) throws Exception {
 
 		Parser parser = DefaultParserFactory.getInstance().newDelimitedParser(toReader(input), ',', '\n');
 		DataSet dataset = parser.parse();
-		while (dataset.next()) {
-			count++;
-		}
-
-		return count;
+		while (process(dataset.next()));
 	}
 
 	@Override

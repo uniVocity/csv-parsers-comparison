@@ -27,18 +27,14 @@ class UnivocityParserWithFieldSelection extends AbstractParser {
 	}
 
 	@Override
-	public int countRows(File input) {
+	public void processRows(File input) {
 		CsvParserSettings settings = new CsvParserSettings();
 		settings.selectIndexes(2); // selected field at index 2. Values for other columns are simply skipped.
 		CsvParser parser = new CsvParser(settings);
 
 		parser.beginParsing(toReader(input));
 
-		int count = 0;
-		while (parser.parseNext() != null) {
-			count++;
-		}
-		return count;
+		while (process(parser.parseNext()));
 	}
 
 	@Override

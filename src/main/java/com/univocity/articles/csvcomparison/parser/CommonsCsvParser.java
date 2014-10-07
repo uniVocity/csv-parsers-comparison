@@ -27,16 +27,12 @@ class CommonsCsvParser extends AbstractParser {
 	}
 
 	@Override
-	@SuppressWarnings("unused")
-	public int countRows(File input) throws Exception {
+	public void processRows(File input) throws Exception {
 		CSVFormat format = CSVFormat.RFC4180;
 		CSVParser parser = CSVParser.parse(input, getEncoding(), format);
-
-		int count = 0;
 		for (CSVRecord record : parser) {
-			count++;
+			process(record);
 		}
-		return count;
 	}
 
 	@Override

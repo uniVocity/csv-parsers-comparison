@@ -27,19 +27,15 @@ class WayIoParser extends AbstractParser {
 		super("Way IO Parser");
 	}
 
-	@SuppressWarnings("unused")
 	@Override
-	public int countRows(File input) throws Exception {
-		int count = 0;
-
+	public void processRows(File input) throws Exception {
 		CsvFile reader = CsvFile.parse(input);
 
 		ParsedLines lines = reader.getLines();
 		for (Line line : lines) {
-			count++;
+			process(line);
 		}
 
-		return count;
 	}
 
 	@Override

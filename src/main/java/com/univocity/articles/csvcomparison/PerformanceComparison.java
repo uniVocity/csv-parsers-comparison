@@ -23,9 +23,6 @@ import com.univocity.articles.csvcomparison.parser.*;
 
 public class PerformanceComparison {
 
-	//private static File file = new File("src/main/resources/worldcitiespop.txt");
-	//private static final int LOOPS = 6;
-
 	private final File file;
 
 	PerformanceComparison(File file) {
@@ -35,10 +32,11 @@ public class PerformanceComparison {
 	private long run(AbstractParser parser) throws Exception {
 		long start = System.currentTimeMillis();
 
-		int rows = parser.countRows(file);
+		parser.processRows(file);
 
 		long time = (System.currentTimeMillis() - start);
-		System.out.println("took " + time + " ms to read " + rows + " rows");
+		System.out.println("took " + time + " ms to read " + parser.getRowCount() + " rows. ");
+		System.setProperty("blackhole", parser.getBlackhole());
 		return time;
 	}
 
@@ -137,9 +135,10 @@ public class PerformanceComparison {
 	}
 
 	public static void main(String... args) throws Exception {
+		
 		int loops = 6;
 		File input = new File("src/main/resources/worldcitiespop.txt");
-
+	
 		new PerformanceComparison(input).execute(loops);
 
 		File hugeInput = new File("src/main/resources/worldcitiespop_huge.txt");

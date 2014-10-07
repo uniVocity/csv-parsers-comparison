@@ -16,14 +16,13 @@ public class SimpleFlatMapperParser extends AbstractParser {
 	}
 
 	@Override
-	public int countRows(final File input) throws Exception {
-		return csvParser.readRows(toReader(input), new RowHandler<String[]>() {
-			public int count;
+	public void processRows(final File input) throws Exception {
+		csvParser.readRows(toReader(input), new RowHandler<String[]>() {
 			@Override
 			public void handle(String[] t) throws Exception {
-				count++;
+				process(t);
 			}
-		}).count;
+		});
 	}
 
 	@Override

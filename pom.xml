@@ -182,12 +182,22 @@
 			<artifactId>jackson-dataformat-csv</artifactId>
 			<version>2.4.2</version>
 		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.4.2</version>
+		</dependency>
 
 		<dependency>
 			<groupId>com.github.arnaudroger</groupId>
 			<artifactId>simpleFlatMapper</artifactId>
-			<version>0.9.8-SNAPSHOT</version>
+			<version>0.9.8</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.ostermiller</groupId>
+			<artifactId>utils</artifactId>
+			<version>1.07.00</version>
+		</dependency>
 	</dependencies>
 </project>
