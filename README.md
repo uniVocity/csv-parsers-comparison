@@ -12,22 +12,24 @@ Our test is very simple and involves just counting the number of rows read from 
 
 This is the list of all parsers tested. Parsers follows by * are commercial an their jars are not included in this project. You have to download them independently:
 
-| Parser                       |   Version | Website                                              |
-|------------------------------|----------:|------------------------------------------------------|
-| uniVocity-parsers' CsvParser |     1.0.2 | [www.univocity.com](http://www.univocity.com)        |
-| CSVeed                       |     0.4.0 | [csveed.org](http://csveed.org)                      |
-| Apache Commons CSV           |       1.0 | [commons.apache.org/proper/commons-csv] (http://commons.apache.org/proper/commons-csv) |
-| OpenCSV                      |       2.3 | [opencsv.sourceforge.net](http://opencsv.sourceforge.net/)                             |
-| SuperCSV                     |     2.2.0 | [supercsv.sourceforge.net](http://supercsv.sourceforge.net/)                           |
-| JavaCSV                      |       2.0 | [sourceforge.net/projects/javacsv](http://sourceforge.net/projects/javacsv)            |
-| jCSV                         |     1.4.0 | [code.google.com/p/jcsv](https://code.google.com/p/jcsv/)                              |
-| flatpack                     |     3.4.2 | [flatpack.sourceforge.net](http://flatpack.sourceforge.net/)                           |
-| SimpleCSV                    |       2.0 | [github.com/quux00/simplecsv](https://github.com/quux00/simplecsv)                     |
-| gj-csv                       |       1.0 | ?                                                                                      |
-| esperio-csv                  |    4.11.0 | [www.espertech.com](http://www.espertech.com/)                                         |
-| way-io                       |     1.6.0 | [www.objectos.com.br](http://www.objectos.com.br/)                              |
-| beanIO                       |     2.1.0 | [beanio.org](http://beanio.org/)                              |
-| DataPipeline's CSVReader*    |     2.3.4 | [northconcepts.com/data-pipeline/](http://northconcepts.com/data-pipeline/)   |
+| Parser                       |   Version | Website                                                                                            |
+|------------------------------|----------:|----------------------------------------------------------------------------------------------------|
+| uniVocity-parsers' CsvParser |     1.0.2 | [www.univocity.com](http://www.univocity.com)                                                      |
+| CSVeed                       |     0.4.0 | [csveed.org](http://csveed.org)                                                                    |
+| Apache Commons CSV           |       1.0 | [commons.apache.org/proper/commons-csv] (http://commons.apache.org/proper/commons-csv)             |
+| OpenCSV                      |       2.3 | [opencsv.sourceforge.net](http://opencsv.sourceforge.net/)                                         |
+| SuperCSV                     |     2.2.0 | [supercsv.sourceforge.net](http://supercsv.sourceforge.net/)                                       |
+| JavaCSV                      |       2.0 | [sourceforge.net/projects/javacsv](http://sourceforge.net/projects/javacsv)                        |
+| jCSV                         |     1.4.0 | [code.google.com/p/jcsv](https://code.google.com/p/jcsv/)                                          |
+| flatpack                     |     3.4.2 | [flatpack.sourceforge.net](http://flatpack.sourceforge.net/)                                       |
+| SimpleCSV                    |       2.0 | [github.com/quux00/simplecsv](https://github.com/quux00/simplecsv)                                 |
+| gj-csv                       |       1.0 | ?                                                                                                  |
+| esperio-csv                  |    4.11.0 | [www.espertech.com](http://www.espertech.com/)                                                     |
+| way-io                       |     1.6.0 | [www.objectos.com.br](http://www.objectos.com.br/)                                                 |
+| beanIO                       |     2.1.0 | [beanio.org](http://beanio.org/)                                                                   |
+| DataPipeline's CSVReader*    |     2.3.4 | [northconcepts.com/data-pipeline/](http://northconcepts.com/data-pipeline/)                        |
+| jackson-dataformat-csv       |     2.4.2 | [github.com/FasterXML/jackson-dataformat-csv](http://github.com/FasterXML/jackson-dataformat-csv)  |
+| OsterMiller Utils            |     1.0.6 | [ostermiller.org/utils/CSV.html](http://ostermiller.org/utils/CSV.html)                            |
 
 
 
@@ -55,6 +57,8 @@ These are the statistics I got after processing 3,173,958 rows:
 |Apache Commons CSV                          |  2800 ms           | 87%                | 2771 ms   | 2836 ms    |
 |Way IO Parser                               |  3329 ms           | 123%               | 3238 ms   | 3418 ms    |
 |Gen-Java CSV                                |  6145 ms           | 311%               | 6064 ms   | 6257 ms    |
+|jackson-dataformat-csv                      |  TBD               | TBD                | TBD       | TBD        |
+|OsterMiller Utils                           |  TBD               | TBD                | TBD       | TBD        |
 
  * `Esperio-csv` and `CSVeed` were unable to process the file and threw exceptions.
  * `Flatpack` hanged so I had to remove it from the test [here](./src/main/java/com/univocity/articles/csvcomparison/parser/Parsers.java).
