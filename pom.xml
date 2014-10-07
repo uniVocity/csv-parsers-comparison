@@ -169,5 +169,17 @@
 			<version>2.1.0</version>
 		</dependency>
 
+		<dependency>
+			<groupId>ostermillerutils</groupId>
+			<artifactId>ostermillerutils</artifactId>
+			<version>1.06</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-csv</artifactId>
+			<version>2.4.2</version>
+		</dependency>
+
 	</dependencies>
 </project>

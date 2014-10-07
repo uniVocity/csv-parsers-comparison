@@ -34,7 +34,9 @@ public class Parsers {
 			new SuperCsvParser(),
 			new UnivocityParser(),
 			new UnivocityParserWithFieldSelection(),
-			new WayIoParser()
+			new WayIoParser(),
+			new OsterMillerParser(),
+			new JacksonParser()
 			);
 
 	private Parsers() {
