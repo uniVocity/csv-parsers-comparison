@@ -25,7 +25,7 @@ public class Parsers {
 			new CommonsCsvParser(),
 			//new DataPipelineCsvParser(), // commercial, depends on license. I can't include on github.
 			new EsperioCsvParser(),
-			//new FlatpackParser(), appears to hang while processing worldcitiespop.txt
+			//new FlatpackParser(),// appears to hang while processing worldcitiespop.txt & consumes all heap space when parsing a huge file
 			new GenJavaParser(),
 			new JavaCsvParser(),
 			new JCsvParser(),

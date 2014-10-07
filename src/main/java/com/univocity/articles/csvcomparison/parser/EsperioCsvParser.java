@@ -33,10 +33,13 @@ class EsperioCsvParser extends AbstractParser {
 
 		AdapterInputSource adapterInputSource = new AdapterInputSource(input);
 		CSVReader reader = new CSVReader(adapterInputSource);
-		while (reader.getNextRecord() != null) {
-			count++;
+		try {
+			while (reader.getNextRecord() != null) {
+				count++;
+			}
+		} catch (EOFException ex) {
+			//end of file, return... lovely implementation
 		}
-
 		return count;
 	}
 
@@ -51,7 +54,7 @@ class EsperioCsvParser extends AbstractParser {
 				rows.add(row);
 			}
 		} catch (EOFException ex) {
-			//end of file, return
+			//end of file, return... lovely implementation
 		}
 		return rows;
 	}

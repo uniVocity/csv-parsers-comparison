@@ -23,10 +23,16 @@ import com.univocity.articles.csvcomparison.parser.*;
 
 public class PerformanceComparison {
 
-	private static File file = new File("src/main/resources/worldcitiespop.txt");
-	private static final int LOOPS = 6;
+	//private static File file = new File("src/main/resources/worldcitiespop.txt");
+	//private static final int LOOPS = 6;
 
-	private static long run(AbstractParser parser) throws Exception {
+	private final File file;
+
+	PerformanceComparison(File file) {
+		this.file = file;
+	}
+
+	private long run(AbstractParser parser) throws Exception {
 		long start = System.currentTimeMillis();
 
 		int rows = parser.countRows(file);
@@ -36,7 +42,7 @@ public class PerformanceComparison {
 		return time;
 	}
 
-	private static TreeMap<Long, String> orderByAverageTime(Map<String, Long[]> stats) {
+	private TreeMap<Long, String> orderByAverageTime(int loops, Map<String, Long[]> stats) {
 		TreeMap<Long, String> averages = new TreeMap<Long, String>();
 
 		for (Entry<String, Long[]> parserTimes : stats.entrySet()) {
@@ -46,15 +52,14 @@ public class PerformanceComparison {
 			for (int i = 1; i < times.length; i++) {
 				average = average + times[i];
 			}
-			average = average / (LOOPS - 1);
+			average = average / (loops - 1);
 			averages.put(average, parserTimes.getKey());
 		}
 
 		return averages;
 	}
-	
 
-	private static long getBestTime(Long[] times) {
+	private long getBestTime(Long[] times) {
 		long best = times[1];
 		for (int i = 1; i < times.length; i++) {
 			if (times[i] < best) {
@@ -64,7 +69,7 @@ public class PerformanceComparison {
 		return best;
 	}
 
-	private static long getWorstTime(Long[] times) {
+	private long getWorstTime(Long[] times) {
 		long worst = times[1];
 		for (int i = 1; i < times.length; i++) {
 			if (times[i] > worst) {
@@ -74,33 +79,10 @@ public class PerformanceComparison {
 		return worst;
 	}
 
-	public static void main(String... args) throws Exception {
-		Map<String, Long[]> stats = new HashMap<String, Long[]>();
-
-		for (AbstractParser parser : Parsers.list()) {
-			Long[] times = new Long[LOOPS];
-			Arrays.fill(times, -1L);
-			stats.put(parser.getName(), times);
-		}
-
-		for (int i = 0; i < LOOPS; i++) {
-			for (AbstractParser parser : Parsers.list()) {
-				try {
-					System.out.print("Loop " + (i + 1) + " - executing " + parser.getName() + "... ");
-					long time = run(parser);
-
-					stats.get(parser.getName())[i] = time;
-				} catch (Throwable ex) {
-					System.out.println("Parser " + parser.getName() + " threw exception " + ex.getMessage());
-				}
-				System.gc();
-				Thread.sleep(200);
-			}
-		}
-
+	private void printResults(int loops, Map<String, Long[]> stats) {
 		System.out.println("\n=========\n AVERAGES \n=========\n");
 
-		Map<Long, String> averages = orderByAverageTime(stats);
+		Map<Long, String> averages = orderByAverageTime(loops, stats);
 		long bestTime = 0;
 		for (Entry<Long, String> average : averages.entrySet()) {
 			long time = average.getKey();
@@ -125,6 +107,53 @@ public class PerformanceComparison {
 
 			System.out.println("(Best: " + best + " ms. Worst: " + worst + " ms.)");
 		}
+	}
+
+	public void execute(final int loops) throws Exception {
+		Map<String, Long[]> stats = new HashMap<String, Long[]>();
+
+		for (AbstractParser parser : Parsers.list()) {
+			Long[] times = new Long[loops];
+			Arrays.fill(times, -1L);
+			stats.put(parser.getName(), times);
+		}
+
+		for (int i = 0; i < loops; i++) {
+			for (AbstractParser parser : Parsers.list()) {
+				try {
+					System.out.print("Loop " + (i + 1) + " - executing " + parser.getName() + "... ");
+					long time = run(parser);
+
+					stats.get(parser.getName())[i] = time;
+				} catch (Throwable ex) {
+					System.out.println("Parser " + parser.getName() + " threw exception " + ex.getMessage());
+				}
+				System.gc();
+				Thread.sleep(200);
+			}
+		}
+
+		printResults(loops, stats);
+	}
+
+	public static void main(String... args) throws Exception {
+		int loops = 6;
+		File input = new File("src/main/resources/worldcitiespop.txt");
+
+		//new PerformanceComparison(input).execute(loops);
+
+		File hugeInput = new File("src/main/resources/worldcitiespop_huge.txt");
+		//executes only if the file has not been generated yet.
+		//creates a huge file with the original input, replicated 15 times. All fields enclosed within quotes.
+		//this generates a file with 47,609,385 rows
+		HugeFileGenerator.generateHugeFile(input, 15, hugeInput);
+
+		System.out.println("==================================");
+		System.out.println("=== Processing huge input file ===");
+		System.out.println("==================================");
+
+		//now we are talking - this is going to take a lot of time to run
+		new PerformanceComparison(hugeInput).execute(loops);
 	}
 
 }
