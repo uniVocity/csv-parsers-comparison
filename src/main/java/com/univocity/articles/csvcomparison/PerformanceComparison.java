@@ -140,7 +140,7 @@ public class PerformanceComparison {
 		int loops = 6;
 		File input = new File("src/main/resources/worldcitiespop.txt");
 
-		//new PerformanceComparison(input).execute(loops);
+		new PerformanceComparison(input).execute(loops);
 
 		File hugeInput = new File("src/main/resources/worldcitiespop_huge.txt");
 		//executes only if the file has not been generated yet.
