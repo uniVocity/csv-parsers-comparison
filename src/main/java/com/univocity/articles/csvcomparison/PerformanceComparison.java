@@ -95,7 +95,7 @@ public class PerformanceComparison {
 			if (bestTime != 0) {
 				long increasePercentage = time * 100 / bestTime - 100;
 				System.out.print(" \t | " + increasePercentage + "% ");
-			} else {
+			} else{
 				bestTime = time;
 				System.out.print(" \t | Best time! ");
 			}
@@ -104,6 +104,7 @@ public class PerformanceComparison {
 			long worst = getWorstTime(stats.get(parser));
 
 			System.out.println(" \t | " + best + " ms \t | " + worst + " ms |");
+			
 		}
 	}
 
@@ -127,7 +128,7 @@ public class PerformanceComparison {
 					System.out.println("Parser " + parser.getName() + " threw exception " + ex.getMessage());
 				}
 				System.gc();
-				Thread.sleep(200);
+				Thread.sleep(500);
 			}
 		}
 

@@ -87,7 +87,7 @@
 		<dependency>
 			<groupId>com.univocity</groupId>
 			<artifactId>univocity-parsers</artifactId>
-			<version>1.0.2</version>
+			<version>1.0.3</version>
 		</dependency>
 
 		<dependency>
@@ -169,14 +169,6 @@
 			<version>2.1.0</version>
 		</dependency>
 
-		<!-- Not on maven central -->
-		<!-- I've committed the jar to the project root (a bad practice, but it works for the purpose of this test) -->
-		<!-- dependency> 
-			<groupId>ostermillerutils</groupId>
-			<artifactId>ostermillerutils</artifactId>
-			<version>1.06</version>
-		</dependency -->
-
 		<dependency>
 			<groupId>com.fasterxml.jackson.dataformat</groupId>
 			<artifactId>jackson-dataformat-csv</artifactId>
@@ -191,7 +183,7 @@
 		<dependency>
 			<groupId>com.github.arnaudroger</groupId>
 			<artifactId>simpleFlatMapper</artifactId>
-			<version>0.9.8</version>
+			<version>0.9.9</version>
 		</dependency>
 
 		<dependency>
