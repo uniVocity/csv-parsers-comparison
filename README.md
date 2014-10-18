@@ -47,8 +47,8 @@ Results will vary depending on your setup and hardware. For reference, here's my
  * CPU: Intel i5-3337U @ 1.8 GHz
  * RAM: 4 GB
  * Storage: 128GB SSD drive
- * OS: Arch Linux 64 bit 
-
+ * OS: Arch Linux 64-bit 
+ * JDK: 1.6.0_45 64-bit (Linux)
 
 *Note* [uniVocity-parsers](http://github.com/uniVocity/univocity-parsers/) provides an option to select the fields you are interested in, and our parsers will execute faster by not processing values that are not selected. It makes quite a difference in performance but we removed this test as the other parsers don't have a similar feature.
 
