@@ -42,6 +42,10 @@ public abstract class AbstractParser {
 		rowCount++;
 		return true;
 	}
+	
+	public void resetRowCount(){
+		rowCount = 0;
+	}
 
 	public int getRowCount() {
 		return rowCount;

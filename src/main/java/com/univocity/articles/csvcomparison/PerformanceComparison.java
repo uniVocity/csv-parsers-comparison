@@ -36,6 +36,7 @@ public class PerformanceComparison {
 
 		long time = (System.currentTimeMillis() - start);
 		System.out.println("took " + time + " ms to read " + parser.getRowCount() + " rows. ");
+		parser.resetRowCount();
 		System.setProperty("blackhole", parser.getBlackhole());
 		return time;
 	}
