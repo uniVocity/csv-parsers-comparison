@@ -183,7 +183,8 @@
 		<dependency>
 			<groupId>com.github.arnaudroger</groupId>
 			<artifactId>simpleFlatMapper</artifactId>
-			<version>0.9.9</version>
+			<version>1.0.0rc2</version>
+			<classifier>jdk16</classifier>
 		</dependency>
 
 		<dependency>
