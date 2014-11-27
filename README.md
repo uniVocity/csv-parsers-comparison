@@ -21,7 +21,7 @@ This is the list of all parsers currently tested. Parsers followed by * are comm
 
 | Parser                       |   Version | Website                                                                                            |
 |------------------------------|----------:|----------------------------------------------------------------------------------------------------|
-| uniVocity-parsers' CsvParser |     1.2.0 | [www.univocity.com](http://www.univocity.com)                                                      |
+| uniVocity-parsers' CsvParser |     1.3.0 | [www.univocity.com](http://www.univocity.com)                                                      |
 | CSVeed                       |     0.4.0 | [csveed.org](http://csveed.org)                                                                    |
 | Apache Commons CSV           |       1.0 | [commons.apache.org/proper/commons-csv] (http://commons.apache.org/proper/commons-csv)             |
 | OpenCSV                      |       2.3 | [opencsv.sourceforge.net](http://opencsv.sourceforge.net/)                                         |
@@ -34,13 +34,13 @@ This is the list of all parsers currently tested. Parsers followed by * are comm
 | esperio-csv                  |    4.11.0 | [www.espertech.com](http://www.espertech.com/)                                                     |
 | way-io                       |     1.6.0 | [www.objectos.com.br](http://www.objectos.com.br/)                                                 |
 | beanIO                       |     2.1.0 | [beanio.org](http://beanio.org/)                                                                   |
-| DataPipeline's CSVReader*    |     2.3.4 | [northconcepts.com/data-pipeline/](http://northconcepts.com/data-pipeline/)                        |
+| DataPipeline's CSVReader*    |     2.3.5 | [northconcepts.com/data-pipeline/](http://northconcepts.com/data-pipeline/)                        |
 | jackson-dataformat-csv       |     2.4.2 | [github.com/FasterXML/jackson-dataformat-csv](http://github.com/FasterXML/jackson-dataformat-csv)  |
 | OsterMiller Utils            |     1.0.6 | [ostermiller.org/utils/CSV.html](http://ostermiller.org/utils/CSV.html)                            |
-| SimpleFlatMapper CSV parser  |	 0.9.9 | [github.com/arnaudroger/SimpleFlatMapper](https://github.com/arnaudroger/SimpleFlatMapper)         |
+| SimpleFlatMapper CSV parser  |  1.0.0rc2 | [github.com/arnaudroger/SimpleFlatMapper](https://github.com/arnaudroger/SimpleFlatMapper)         |
 
 
-## Statistics (updated 12nd of November, 2014)
+## Statistics (updated 28th of November, 2014)
 
 Results will vary depending on your setup and hardware. For reference, here's my (very) modest hardware, an ultrabook: 
 
@@ -48,64 +48,64 @@ Results will vary depending on your setup and hardware. For reference, here's my
  * RAM: 4 GB
  * Storage: 128GB SSD drive
  * OS: Arch Linux 64-bit 
- * JDK: 1.6.0_45 64-bit (Linux)
- * JDK: 1.7.0_71 64-bit (Linux)
  * JDK: 1.8.0_25 64-bit (Linux)
+ * JDK: 1.7.0_71 64-bit (Linux)
+ * JDK: 1.6.0_45 64-bit (Linux)
 
 *Note* [uniVocity-parsers](http://github.com/uniVocity/univocity-parsers/) provides an option to select the fields you are interested in, and our parsers will execute faster by not processing values that are not selected. It makes quite a difference in performance but we removed this test as the other parsers don't have a similar feature.
 
 ### Processing 3,173,958 rows of non [RFC 4180](https://www.rfc-editor.org/rfc/rfc4180.txt) compliant input.
 
-## JDK 6
+## JDK 8
 | Parser                                     | Average time       | % Slower than best | Best time | Worst time |
 |--------------------------------------------|-------------------:|-------------------:|----------:|-----------:|
-| SimpleFlatMapper CSV parser 	 | 1780 ms  	 | Best time!  	 | 1694 ms 	 | 1949 ms |
-| uniVocity CSV parser 	 | 1823 ms  	 | 2%  	 | 1755 ms 	 | 1893 ms |
-| Jackson CSV parser 	 | 1935 ms  	 | 8%  	 | 1810 ms 	 | 2145 ms |
-| OpenCSV 	 | 2663 ms  	 | 49%  	 | 2513 ms 	 | 2856 ms |
-| JCSV Parser 	 | 2670 ms  	 | 50%  	 | 2602 ms 	 | 2778 ms |
-| Java CSV Parser 	 | 2757 ms  	 | 54%  	 | 2692 ms 	 | 2830 ms |
-| Data pipeline 	 | 2896 ms  	 | 62%  	 | 2817 ms 	 | 3030 ms |
-| Oster Miller CSV parser 	 | 2902 ms  	 | 63%  	 | 2761 ms 	 | 2943 ms |
-| Simple CSV parser 	 | 3054 ms  	 | 71%  	 | 2906 ms 	 | 3196 ms |
-| SuperCSV 	 | 3104 ms  	 | 74%  	 | 2907 ms 	 | 3231 ms |
-| Apache Commons CSV 	 | 3291 ms  	 | 84%  	 | 3183 ms 	 | 3402 ms |
-| Way IO Parser 	 | 3645 ms  	 | 104%  	 | 3458 ms 	 | 3792 ms |
-| Gen-Java CSV 	 | 7065 ms  	 | 296%  	 | 6971 ms 	 | 7185 ms |
+| uniVocity CSV parser 	 | 1792 ms  	 | Best time!  	 | 1654 ms 	 | 1930 ms |
+| Jackson CSV parser 	 | 1992 ms  	 | 11%  	 | 1897 ms 	 | 2130 ms |
+| SimpleFlatMapper CSV parser 	 | 2324 ms  	 | 29%  	 | 2120 ms 	 | 2581 ms |
+| JCSV Parser 	 | 2733 ms  	 | 52%  	 | 2458 ms 	 | 2886 ms |
+| SuperCSV 	 | 2840 ms  	 | 58%  	 | 2631 ms 	 | 3184 ms |
+| Oster Miller CSV parser 	 | 2876 ms  	 | 60%  	 | 2647 ms 	 | 3193 ms |
+| Simple CSV parser 	 | 2887 ms  	 | 61%  	 | 2815 ms 	 | 3012 ms |
+| Java CSV Parser 	 | 2905 ms  	 | 62%  	 | 2747 ms 	 | 3172 ms |
+| OpenCSV 	 | 3112 ms  	 | 73%  	 | 2995 ms 	 | 3226 ms |
+| Apache Commons CSV 	 | 3136 ms  	 | 75%  	 | 3057 ms 	 | 3332 ms |
+| Data pipeline 	 | 3434 ms  	 | 91%  	 | 3198 ms 	 | 3567 ms |
+| Way IO Parser 	 | 4313 ms  	 | 140%  	 | 4133 ms 	 | 4467 ms |
+| Gen-Java CSV 	 | 6715 ms  	 | 274%  	 | 6634 ms 	 | 6797 ms |
 
 ## JDK 7
 | Parser                                     | Average time       | % Slower than best | Best time | Worst time |
 |--------------------------------------------|-------------------:|-------------------:|----------:|-----------:|
-| SimpleFlatMapper CSV parser 	 | 1670 ms  	 | Best time!  	 | 1479 ms 	 | 1803 ms |
-| uniVocity CSV parser 	 | 1854 ms  	 | 11%  	 | 1790 ms 	 | 1988 ms |
-| Jackson CSV parser 	 | 2022 ms  	 | 21%  	 | 1835 ms 	 | 2138 ms |
-| JCSV Parser 	 | 2371 ms  	 | 41%  	 | 2312 ms 	 | 2443 ms |
-| Oster Miller CSV parser 	 | 2709 ms  	 | 62%  	 | 2587 ms 	 | 2787 ms |
-| Java CSV Parser 	 | 2791 ms  	 | 67%  	 | 2570 ms 	 | 2965 ms |
-| OpenCSV 	 | 2893 ms  	 | 73%  	 | 2663 ms 	 | 3087 ms |
-| SuperCSV 	 | 2938 ms  	 | 75%  	 | 2797 ms 	 | 3039 ms |
-| Data pipeline 	 | 3169 ms  	 | 89%  	 | 3024 ms 	 | 3428 ms |
-| Apache Commons CSV 	 | 3221 ms  	 | 92%  	 | 3096 ms 	 | 3360 ms |
-| Simple CSV parser 	 | 3282 ms  	 | 96%  	 | 3167 ms 	 | 3474 ms |
-| Way IO Parser 	 | 4115 ms  	 | 146%  	 | 3993 ms 	 | 4343 ms |
-| Gen-Java CSV 	 | 9557 ms  	 | 472%  	 | 9138 ms 	 | 9845 ms |
+| uniVocity CSV parser 	 | 1870 ms  	 | Best time!  	 | 1840 ms 	 | 1900 ms |
+| SimpleFlatMapper CSV parser 	 | 1904 ms  	 | 1%  	 | 1720 ms 	 | 2097 ms |
+| Jackson CSV parser 	 | 1975 ms  	 | 5%  	 | 1862 ms 	 | 2099 ms |
+| JCSV Parser 	 | 2497 ms  	 | 33%  	 | 2323 ms 	 | 2755 ms |
+| Oster Miller CSV parser 	 | 2795 ms  	 | 49%  	 | 2659 ms 	 | 2975 ms |
+| SuperCSV 	 | 2862 ms  	 | 53%  	 | 2715 ms 	 | 3029 ms |
+| Java CSV Parser 	 | 2894 ms  	 | 54%  	 | 2667 ms 	 | 3137 ms |
+| OpenCSV 	 | 2957 ms  	 | 58%  	 | 2788 ms 	 | 3122 ms |
+| Data pipeline 	 | 3049 ms  	 | 63%  	 | 2903 ms 	 | 3267 ms |
+| Apache Commons CSV 	 | 3192 ms  	 | 70%  	 | 3112 ms 	 | 3292 ms |
+| Simple CSV parser 	 | 3322 ms  	 | 77%  	 | 3205 ms 	 | 3537 ms |
+| Way IO Parser 	 | 4150 ms  	 | 121%  	 | 3942 ms 	 | 4394 ms |
+| Gen-Java CSV 	 | 8858 ms  	 | 373%  	 | 8519 ms 	 | 9215 ms |
 
-## JDK 8
+## JDK 6
 | Parser                                     | Average time       | % Slower than best | Best time | Worst time |
 |--------------------------------------------|-------------------:|-------------------:|----------:|-----------:|
-| uniVocity CSV parser 	 | 1757 ms  	 | Best time!  	 | 1696 ms 	 | 1841 ms |
-| Jackson CSV parser 	 | 1834 ms  	 | 4%  	 | 1751 ms 	 | 1922 ms |
-| SimpleFlatMapper CSV parser 	 | 2313 ms  	 | 31%  	 | 2138 ms 	 | 2542 ms |
-| JCSV Parser 	 | 2525 ms  	 | 43%  	 | 2392 ms 	 | 2794 ms |
-| Oster Miller CSV parser 	 | 2759 ms  	 | 57%  	 | 2680 ms 	 | 2841 ms |
-| Java CSV Parser 	 | 2856 ms  	 | 62%  	 | 2741 ms 	 | 2975 ms |
-| SuperCSV 	 | 2878 ms  	 | 63%  	 | 2711 ms 	 | 3110 ms |
-| Simple CSV parser 	 | 2942 ms  	 | 67%  	 | 2758 ms 	 | 3331 ms |
-| OpenCSV 	 | 2984 ms  	 | 69%  	 | 2824 ms 	 | 3097 ms |
-| Apache Commons CSV 	 | 3057 ms  	 | 73%  	 | 3015 ms 	 | 3143 ms |
-| Data pipeline 	 | 3381 ms  	 | 92%  	 | 3021 ms 	 | 4042 ms |
-| Way IO Parser 	 | 4156 ms  	 | 136%  	 | 4049 ms 	 | 4291 ms |
-| Gen-Java CSV 	 | 6902 ms  	 | 292%  	 | 6740 ms 	 | 6995 ms |
+| SimpleFlatMapper CSV parser 	 | 1749 ms  	 | Best time!  	 | 1718 ms 	 | 1790 ms |
+| uniVocity CSV parser 	 | 1911 ms  	 | 9%  	 | 1796 ms 	 | 2031 ms |
+| Jackson CSV parser 	 | 1983 ms  	 | 13%  	 | 1906 ms 	 | 2103 ms |
+| OpenCSV 	 | 2611 ms  	 | 49%  	 | 2567 ms 	 | 2675 ms |
+| JCSV Parser 	 | 2653 ms  	 | 51%  	 | 2600 ms 	 | 2707 ms |
+| Java CSV Parser 	 | 2782 ms  	 | 59%  	 | 2706 ms 	 | 2879 ms |
+| Data pipeline 	 | 2805 ms  	 | 60%  	 | 2688 ms 	 | 2894 ms |
+| Simple CSV parser 	 | 3098 ms  	 | 77%  	 | 2945 ms 	 | 3421 ms |
+| Oster Miller CSV parser 	 | 3122 ms  	 | 78%  	 | 3022 ms 	 | 3210 ms |
+| SuperCSV 	 | 3185 ms  	 | 82%  	 | 3059 ms 	 | 3351 ms |
+| Apache Commons CSV 	 | 3358 ms  	 | 91%  	 | 3280 ms 	 | 3445 ms |
+| Way IO Parser 	 | 3743 ms  	 | 114%  	 | 3683 ms 	 | 3827 ms |
+| Gen-Java CSV 	 | 7144 ms  	 | 308%  	 | 6991 ms 	 | 7278 ms |
 
  * `Esperio-csv` and `CSVeed` were unable to process the file and threw exceptions.
  * `Flatpack` hanged so I had to remove it from the test [here](./src/main/java/com/univocity/articles/csvcomparison/parser/Parsers.java).
@@ -115,63 +115,64 @@ Results will vary depending on your setup and hardware. For reference, here's my
 
 **Note** this input file has all the values enclosed within quotes. We generated the input like this on purpose as the algorithm to process quotes is a bit different.
 
-## JDK 6
-| Parser                                     | Average time       | % Slower than best | Best time  | Worst time |
-|--------------------------------------------|-------------------:|-------------------:|-----------:|-----------:|
-| uniVocity CSV parser 	 | 2234 ms  	 | Best time!  	 | 2119 ms 	 | 2352 ms |
-| SimpleFlatMapper CSV parser 	 | 2356 ms  	 | 5%  	 | 2261 ms 	 | 2438 ms |
-| Jackson CSV parser 	 | 2640 ms  	 | 18%  	 | 2513 ms 	 | 2879 ms |
-| Data pipeline 	 | 3168 ms  	 | 41%  	 | 3011 ms 	 | 3261 ms |
-| OpenCSV 	 | 3407 ms  	 | 52%  	 | 3273 ms 	 | 3496 ms |
-| JCSV Parser 	 | 3439 ms  	 | 53%  	 | 3378 ms 	 | 3542 ms |
-| SuperCSV 	 | 3612 ms  	 | 61%  	 | 3526 ms 	 | 3776 ms |
-| Java CSV Parser 	 | 3636 ms  	 | 62%  	 | 3566 ms 	 | 3796 ms |
-| Simple CSV parser 	 | 3871 ms  	 | 73%  	 | 3751 ms 	 | 4022 ms |
-| Oster Miller CSV parser 	 | 3887 ms  	 | 73%  	 | 3766 ms 	 | 4002 ms |
-| Apache Commons CSV 	 | 4380 ms  	 | 96%  	 | 4050 ms 	 | 4630 ms |
-| Way IO Parser 	 | 4554 ms  	 | 103%  	 | 4477 ms 	 | 4655 ms |
-| Esperio CSV parser 	 | 5683 ms  	 | 154%  	 | 5601 ms 	 | 5754 ms |
-| Gen-Java CSV 	 | 8750 ms  	 | 291%  	 | 8653 ms 	 | 8893 ms |
-| Bean IO Parser 	 | 10350 ms  	 | 363%  	 | 10191 ms 	 | 10576 ms |
-
-
-## JDK 7
-| Parser                                     | Average time       | % Slower than best | Best time  | Worst time |
-|--------------------------------------------|-------------------:|-------------------:|-----------:|-----------:|
-| uniVocity CSV parser 	 | 2159 ms  	 | Best time!  	 | 2055 ms 	 | 2258 ms |
-| Jackson CSV parser 	 | 2397 ms  	 | 11%  	 | 2271 ms 	 | 2622 ms |
-| SimpleFlatMapper CSV parser 	 | 2436 ms  	 | 12%  	 | 2202 ms 	 | 2664 ms |
-| JCSV Parser 	 | 3195 ms  	 | 47%  	 | 3065 ms 	 | 3428 ms |
-| SuperCSV 	 | 3337 ms  	 | 54%  	 | 3101 ms 	 | 3752 ms |
-| Data pipeline 	 | 3387 ms  	 | 56%  	 | 3209 ms 	 | 3728 ms |
-| OpenCSV 	 | 3675 ms  	 | 70%  	 | 3472 ms 	 | 3887 ms |
-| Java CSV Parser 	 | 3964 ms  	 | 83%  	 | 3796 ms 	 | 4101 ms |
-| Simple CSV parser 	 | 4264 ms  	 | 97%  	 | 4067 ms 	 | 4480 ms |
-| Apache Commons CSV 	 | 4311 ms  	 | 99%  	 | 4071 ms 	 | 4523 ms |
-| Oster Miller CSV parser 	 | 4329 ms  	 | 100%  	 | 4053 ms 	 | 4840 ms |
-| Way IO Parser 	 | 5081 ms  	 | 135%  	 | 4960 ms 	 | 5363 ms |
-| Esperio CSV parser 	 | 5881 ms  	 | 172%  	 | 5689 ms 	 | 6144 ms |
-| Gen-Java CSV 	 | 11894 ms  	 | 450%  	 | 11163 ms 	 | 12488 ms |
-| Bean IO Parser 	 | 13838 ms  	 | 540%  	 | 13441 ms 	 | 14210 ms |
 
 ## JDK 8
 | Parser                                     | Average time       | % Slower than best | Best time  | Worst time |
 |--------------------------------------------|-------------------:|-------------------:|-----------:|-----------:|
-| uniVocity CSV parser 	 | 2179 ms  	 | Best time!  	 | 2077 ms 	 | 2281 ms |
-| Jackson CSV parser 	 | 2308 ms  	 | 5%  	 | 2163 ms 	 | 2427 ms |
-| SimpleFlatMapper CSV parser 	 | 3135 ms  	 | 43%  	 | 2845 ms 	 | 3362 ms |
-| JCSV Parser 	 | 3390 ms  	 | 55%  	 | 3287 ms 	 | 3507 ms |
-| Data pipeline 	 | 3466 ms  	 | 59%  	 | 3217 ms 	 | 3611 ms |
-| SuperCSV 	 | 3516 ms  	 | 61%  	 | 3213 ms 	 | 3925 ms |
-| Apache Commons CSV 	 | 3533 ms  	 | 62%  	 | 3367 ms 	 | 3711 ms |
-| Java CSV Parser 	 | 3796 ms  	 | 74%  	 | 3703 ms 	 | 3966 ms |
-| OpenCSV 	 | 4016 ms  	 | 84%  	 | 3768 ms 	 | 4190 ms |
-| Simple CSV parser 	 | 4051 ms  	 | 85%  	 | 3952 ms 	 | 4224 ms |
-| Oster Miller CSV parser 	 | 4165 ms  	 | 91%  	 | 3945 ms 	 | 4281 ms |
-| Way IO Parser 	 | 4923 ms  	 | 125%  	 | 4760 ms 	 | 5151 ms |
-| Esperio CSV parser 	 | 5321 ms  	 | 144%  	 | 4977 ms 	 | 5725 ms |
-| Gen-Java CSV 	 | 8941 ms  	 | 310%  	 | 8618 ms 	 | 9277 ms |
-| Bean IO Parser 	 | 11232 ms  	 | 415%  	 | 10824 ms 	 | 11634 ms |
+| uniVocity CSV parser 	 | 2270 ms  	 | Best time!  	 | 2178 ms 	 | 2352 ms |
+| Jackson CSV parser 	 | 2416 ms  	 | 6%  	 | 2294 ms 	 | 2490 ms |
+| SuperCSV 	 | 3116 ms  	 | 37%  	 | 2956 ms 	 | 3267 ms |
+| JCSV Parser 	 | 3172 ms  	 | 39%  	 | 3049 ms 	 | 3325 ms |
+| SimpleFlatMapper CSV parser 	 | 3405 ms  	 | 50%  	 | 3177 ms 	 | 3709 ms |
+| Data pipeline 	 | 3424 ms  	 | 50%  	 | 3355 ms 	 | 3478 ms |
+| Apache Commons CSV 	 | 3620 ms  	 | 59%  	 | 3500 ms 	 | 3769 ms |
+| Simple CSV parser 	 | 3793 ms  	 | 67%  	 | 3635 ms 	 | 3896 ms |
+| Java CSV Parser 	 | 3864 ms  	 | 70%  	 | 3703 ms 	 | 4046 ms |
+| OpenCSV 	 | 4115 ms  	 | 81%  	 | 3955 ms 	 | 4532 ms |
+| Oster Miller CSV parser 	 | 4165 ms  	 | 83%  	 | 3988 ms 	 | 4343 ms |
+| Esperio CSV parser 	 | 5355 ms  	 | 135%  	 | 5122 ms 	 | 5591 ms |
+| Way IO Parser 	 | 5400 ms  	 | 137%  	 | 5016 ms 	 | 5588 ms |
+| Gen-Java CSV 	 | 8558 ms  	 | 277%  	 | 8106 ms 	 | 8844 ms |
+| Bean IO Parser 	 | 10796 ms  	 | 375%  	 | 10504 ms 	 | 11341 ms |
+
+## JDK 7
+| Parser                                     | Average time       | % Slower than best | Best time  | Worst time |
+|--------------------------------------------|-------------------:|-------------------:|-----------:|-----------:|
+| uniVocity CSV parser 	 | 2352 ms  	 | Best time!  	 | 2286 ms 	 | 2449 ms |
+| Jackson CSV parser 	 | 2432 ms  	 | 3%  	 | 2234 ms 	 | 2627 ms |
+| SimpleFlatMapper CSV parser 	 | 2556 ms  	 | 8%  	 | 2373 ms 	 | 2836 ms |
+| Data pipeline 	 | 3281 ms  	 | 39%  	 | 3084 ms 	 | 3596 ms |
+| SuperCSV 	 | 3296 ms  	 | 40%  	 | 2989 ms 	 | 3500 ms |
+| JCSV Parser 	 | 3305 ms  	 | 40%  	 | 3145 ms 	 | 3692 ms |
+| OpenCSV 	 | 3859 ms  	 | 64%  	 | 3671 ms 	 | 4092 ms |
+| Java CSV Parser 	 | 3884 ms  	 | 65%  	 | 3749 ms 	 | 4139 ms |
+| Oster Miller CSV parser 	 | 4054 ms  	 | 72%  	 | 3804 ms 	 | 4255 ms |
+| Simple CSV parser 	 | 4246 ms  	 | 80%  	 | 4093 ms 	 | 4516 ms |
+| Apache Commons CSV 	 | 4303 ms  	 | 82%  	 | 4197 ms 	 | 4405 ms |
+| Way IO Parser 	 | 5095 ms  	 | 116%  	 | 4935 ms 	 | 5270 ms |
+| Esperio CSV parser 	 | 6001 ms  	 | 155%  	 | 5760 ms 	 | 6375 ms |
+| Gen-Java CSV 	 | 10918 ms  	 | 364%  	 | 10345 ms 	 | 11305 ms |
+| Bean IO Parser 	 | 12839 ms  	 | 445%  	 | 11992 ms 	 | 13641 ms |
+
+## JDK 6
+| Parser                                     | Average time       | % Slower than best | Best time  | Worst time |
+|--------------------------------------------|-------------------:|-------------------:|-----------:|-----------:|
+| uniVocity CSV parser 	 | 2395 ms  	 | Best time!  	 | 2368 ms 	 | 2444 ms |
+| SimpleFlatMapper CSV parser 	 | 2539 ms  	 | 6%  	 | 2480 ms 	 | 2582 ms |
+| Jackson CSV parser 	 | 2809 ms  	 | 17%  	 | 2669 ms 	 | 2982 ms |
+| Data pipeline 	 | 3197 ms  	 | 33%  	 | 3067 ms 	 | 3395 ms |
+| JCSV Parser 	 | 3423 ms  	 | 42%  	 | 3293 ms 	 | 3678 ms |
+| OpenCSV 	 | 3570 ms  	 | 49%  	 | 3457 ms 	 | 3847 ms |
+| Java CSV Parser 	 | 3745 ms  	 | 56%  	 | 3541 ms 	 | 3977 ms |
+| SuperCSV 	 | 3808 ms  	 | 58%  	 | 3638 ms 	 | 4062 ms |
+| Oster Miller CSV parser 	 | 3944 ms  	 | 64%  	 | 3750 ms 	 | 4161 ms |
+| Simple CSV parser 	 | 3962 ms  	 | 65%  	 | 3776 ms 	 | 4226 ms |
+| Apache Commons CSV 	 | 4315 ms  	 | 80%  	 | 4189 ms 	 | 4448 ms |
+| Way IO Parser 	 | 4667 ms  	 | 94%  	 | 4566 ms 	 | 4773 ms |
+| Esperio CSV parser 	 | 5625 ms  	 | 134%  	 | 5496 ms 	 | 5778 ms |
+| Gen-Java CSV 	 | 8977 ms  	 | 274%  	 | 8759 ms 	 | 9293 ms |
+| Bean IO Parser 	 | 10848 ms  	 | 352%  	 | 10385 ms 	 | 11225 ms |
+
 
  * `CSVeed` was unable to process the file and threw exception with the message "Parsing symbol OTHER_SYMBOL [44] in state ESCAPING".
  * `Flatpack` blew up the Java heap space so I had to remove it from the test [here](./src/main/java/com/univocity/articles/csvcomparison/parser/Parsers.java).

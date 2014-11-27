@@ -87,7 +87,7 @@
 		<dependency>
 			<groupId>com.univocity</groupId>
 			<artifactId>univocity-parsers</artifactId>
-			<version>1.2.0</version>
+			<version>1.3.0</version>
 		</dependency>
 
 		<dependency>
