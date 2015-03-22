@@ -30,13 +30,14 @@ public class Parsers {
 			new JavaCsvParser(),
 			new JCsvParser(),
 			new OpenCsvParser(),
-			new SimpleCsvParser(),
+			new ProductCollectionsParser(),
+                        new SimpleCsvParser(),
 			new SuperCsvParser(),
 			new UnivocityParser(),
 			new WayIoParser(),
 			new OsterMillerParser(),
-			new JacksonParser(),
-			new SimpleFlatMapperParser()
+			new JacksonParser()//,
+			//new SimpleFlatMapperParser()
 			);
 
 	private Parsers() {

@@ -57,6 +57,17 @@
 
 	<build>
 		<plugins>
+                  <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <version>1.2.1</version>
+                    <configuration>
+                     <mainClass>com.univocity.articles.csvcomparison.PerformanceComparison</mainClass>
+                     <arguments>
+                        <argument>argument1</argument>
+                     </arguments>
+                    </configuration>
+                  </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -84,6 +95,12 @@
 	</build>
 
 	<dependencies>
+        <dependency>
+            <groupId>com.github.marklister</groupId>
+            <artifactId>product-collections_2.11</artifactId>
+            <version>1.4.2-SNAPSHOT</version>
+        </dependency>
+
 		<dependency>
 			<groupId>com.univocity</groupId>
 			<artifactId>univocity-parsers</artifactId>
@@ -143,6 +160,12 @@
 			<groupId>net.sf.opencsv</groupId>
 			<artifactId>opencsv</artifactId>
 			<version>2.3</version>
+		</dependency>
+
+                <dependency>
+			<groupId>com.github.marklister</groupId>
+			<artifactId>product-collections_2.11</artifactId>
+			<version>1.4.2</version>
 		</dependency>
 
 		<dependency>
