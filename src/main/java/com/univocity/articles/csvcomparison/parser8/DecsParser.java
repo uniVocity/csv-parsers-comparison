@@ -8,10 +8,10 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.Collection;
 import java.util.List;
-import java.util.Spliterator;
 
 import static diergo.csv.CsvParserBuilder.csvParser;
 import static diergo.csv.Readers.asLines;
+import static java.util.Spliterator.SIZED;
 import static java.util.Spliterators.spliterator;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.StreamSupport.stream;
@@ -25,8 +25,8 @@ class DecsParser extends AbstractParser {
     @Override
     public void processRows(File input) throws Exception {
         asLines(new InputStreamReader(new FileInputStream(input), getEncodingName()))
-            .map(csvParser().separatedBy(',').build()).flatMap(Collection::stream)
-        .forEach(this::process);
+            .map(csvParser().separatedBy(',').inLaxMode().build()).flatMap(Collection::stream)
+            .forEach(this::process);
     }
 
     @Override
@@ -37,6 +37,6 @@ class DecsParser extends AbstractParser {
     }
 
     private String[] toStringArray(Row row) {
-        return stream(spliterator(row.iterator(), row.getLength(), Spliterator.SIZED), false).toArray(String[]::new);
+        return stream(spliterator(row.iterator(), row.getLength(), SIZED), false).toArray(String[]::new);
     }
 }
