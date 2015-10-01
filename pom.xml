@@ -216,5 +216,11 @@
 			<artifactId>utils</artifactId>
 			<version>1.07.00</version>
 		</dependency>
+
+		<dependency>
+			<groupId>diergo</groupId>
+			<artifactId>decs</artifactId>
+			<version>3.0.0-RELEASE</version>
+		</dependency>
 	</dependencies>
 </project>

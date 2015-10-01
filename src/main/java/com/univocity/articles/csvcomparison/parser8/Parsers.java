@@ -10,6 +10,7 @@ public class Parsers {
 
     public static List<AbstractParser> list() {
         List<AbstractParser> allParsers = new ArrayList<>(com.univocity.articles.csvcomparison.parser.Parsers.list());
+        allParsers.add(new DecsParser());
         return allParsers;
     }
 
