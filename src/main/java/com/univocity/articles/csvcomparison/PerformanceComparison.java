@@ -119,7 +119,7 @@ public class PerformanceComparison {
 		}
 
 		for (int i = 0; i < loops; i++) {
-			for (AbstractParser parser : Parsers.list()) {
+			for (AbstractParser parser : ParsersRegistry.getParsers()) {
 				try {
 					System.out.print("Loop " + (i + 1) + " - executing " + parser.getName() + "... ");
 					long time = run(parser);

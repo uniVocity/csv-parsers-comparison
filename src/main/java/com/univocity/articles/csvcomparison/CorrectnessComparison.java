@@ -63,7 +63,7 @@ public class CorrectnessComparison {
 
 	public static void main(String... args) {
 
-		for (AbstractParser parser : Parsers.list()) {
+		for (AbstractParser parser : ParsersRegistry.getParsers()) {
 			try {
 				assertHeadersAndValuesMatch(parser);
 			} catch (Throwable ex) {
@@ -72,5 +72,6 @@ public class CorrectnessComparison {
 		}
 
 	}
+    
 
 }
