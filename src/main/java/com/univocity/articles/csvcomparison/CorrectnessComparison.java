@@ -65,9 +65,10 @@ public class CorrectnessComparison {
 
 		for (AbstractParser parser : ParsersRegistry.getParsers()) {
 			try {
+			    	System.out.println("try Parser " + parser.getName());
 				assertHeadersAndValuesMatch(parser);
 			} catch (Throwable ex) {
-				System.err.println("Parser " + parser.getName() + " threw exception " + ex.getMessage());
+				System.err.println("Parser " + parser.getName() + " threw exception: " + ex.getMessage());
 			}
 		}
 

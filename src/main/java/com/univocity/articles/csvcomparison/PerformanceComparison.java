@@ -112,7 +112,7 @@ public class PerformanceComparison {
 	public void execute(final int loops) throws Exception {
 		Map<String, Long[]> stats = new HashMap<String, Long[]>();
 
-		for (AbstractParser parser : Parsers.list()) {
+		for (AbstractParser parser : ParsersRegistry.getParsers()) {
 			Long[] times = new Long[loops];
 			Arrays.fill(times, -1L);
 			stats.put(parser.getName(), times);
@@ -126,7 +126,7 @@ public class PerformanceComparison {
 
 					stats.get(parser.getName())[i] = time;
 				} catch (Throwable ex) {
-					System.out.println("Parser " + parser.getName() + " threw exception " + ex.getMessage());
+					System.out.println("Parser " + parser.getName() + " threw exception: " + ex.getMessage());
 				}
 				System.gc();
 				Thread.sleep(500);
