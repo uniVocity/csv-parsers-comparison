@@ -168,7 +168,7 @@ public class PerformanceComparison {
 					throw new IllegalStateException("Could not find '" + WORLDCITIES_FILE + "' in classpath or in folder: " + args[0]);
 				}
 			} else {
-				throw new IllegalStateException("Could not find '" + WORLDCITIES_FILE + "' in classpath");
+				throw new IllegalStateException("Could not find '" + WORLDCITIES_FILE + "' in classpath, or path not specified as arg[0]");
 			}
 		}
 	
@@ -182,7 +182,7 @@ public class PerformanceComparison {
 			if(args.length > 0) {
 				hugeInput = new File(args[0], WORLDCITIES_HUGE_FILE);
 			} else {
-				throw new IllegalStateException("Could not find '" + WORLDCITIES_HUGE_FILE + "' in classpath or path not specified at arg[0]");
+				throw new IllegalStateException("Could not find '" + WORLDCITIES_HUGE_FILE + "' in classpath, or path not specified as arg[0]");
 			}
 		}
 		

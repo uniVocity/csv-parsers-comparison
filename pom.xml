@@ -80,6 +80,42 @@
 					</execution>
 				</executions>
 			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>3.1.0</version>
+				<configuration>
+					<transformers>
+						<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+							<mainClass>com.univocity.articles.csvcomparison.PerformanceComparison</mainClass>
+						</transformer>
+						<transformer implementation="org.apache.maven.plugins.shade.resource.IncludeResourceTransformer">
+							<resource>META-INF/LICENSE-2.0.html</resource>
+							<file>LICENSE-2.0.html</file>
+						</transformer>
+						<transformer implementation="org.apache.maven.plugins.shade.resource.IncludeResourceTransformer">
+							<resource>META-INF/README.md</resource>
+							<file>README.md</file>
+						</transformer>
+						<transformer implementation="org.apache.maven.plugins.shade.resource.IncludeResourceTransformer">
+							<resource>correctness.csv</resource>
+							<file>correctness.csv</file>
+						</transformer>
+					</transformers>
+					<shadedArtifactAttached>true</shadedArtifactAttached>
+					<shadedClassifierName>uber</shadedClassifierName>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
 		</plugins>
 	</build>
 
