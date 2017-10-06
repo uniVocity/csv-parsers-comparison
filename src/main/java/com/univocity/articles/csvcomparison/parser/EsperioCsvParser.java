@@ -28,7 +28,7 @@ class EsperioCsvParser extends AbstractParser {
 	}
 
 	@Override
-	public void processRows(File input) throws Exception {
+	public void processRows(final Reader input) throws Exception {
 
 		AdapterInputSource adapterInputSource = new AdapterInputSource(input);
 		CSVReader reader = new CSVReader(adapterInputSource);
@@ -40,7 +40,7 @@ class EsperioCsvParser extends AbstractParser {
 	}
 
 	@Override
-	public List<String[]> parseRows(File input) throws Exception {
+	public List<String[]> parseRows(final Reader input) throws Exception {
 		List<String[]> rows = new ArrayList<String[]>();
 		AdapterInputSource adapterInputSource = new AdapterInputSource(input);
 		CSVReader reader = new CSVReader(adapterInputSource);

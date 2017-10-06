@@ -27,18 +27,18 @@ class CommonsCsvParser extends AbstractParser {
 	}
 
 	@Override
-	public void processRows(File input) throws Exception {
+	public void processRows(final Reader input) throws Exception {
 		CSVFormat format = CSVFormat.RFC4180;
-		CSVParser parser = CSVParser.parse(input, getEncoding(), format);
+		CSVParser parser = new CSVParser(input, format);
 		for (CSVRecord record : parser) {
 			process(record);
 		}
 	}
 
 	@Override
-	public List<String[]> parseRows(File input) throws Exception {
+	public List<String[]> parseRows(final Reader input) throws Exception {
 		CSVFormat format = CSVFormat.RFC4180;
-		CSVParser parser = CSVParser.parse(input, getEncoding(), format);
+		CSVParser parser = new CSVParser(input, format);
 
 		List<String[]> rows = new ArrayList<String[]>();
 

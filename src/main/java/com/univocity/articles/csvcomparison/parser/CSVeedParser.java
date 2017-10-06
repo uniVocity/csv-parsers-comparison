@@ -27,17 +27,17 @@ class CSVeedParser extends AbstractParser {
 	}
 
 	@Override
-	public void processRows(File input) throws Exception {
-		CsvClient<Row> parser = new CsvClientImpl<Row>(toReader(input));
+	public void processRows(final Reader input) throws Exception {
+		CsvClient<Row> parser = new CsvClientImpl<Row>(input);
 		while (process(parser.readRow()));
 	}
 
 	@Override
-	public List<String[]> parseRows(File input) throws Exception {
+	public List<String[]> parseRows(final Reader input) throws Exception {
 		List<String[]> rows = new ArrayList<String[]>();
 
 		Row row;
-		CsvClient<Row> parser = new CsvClientImpl<Row>(toReader(input));
+		CsvClient<Row> parser = new CsvClientImpl<Row>(input);
 		while ((row = parser.readRow()) != null) {
 			String[] data = new String[row.size()];
 			for (int i = 0; i < data.length; i++) {

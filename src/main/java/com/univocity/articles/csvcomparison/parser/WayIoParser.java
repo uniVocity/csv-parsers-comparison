@@ -28,8 +28,8 @@ class WayIoParser extends AbstractParser {
 	}
 
 	@Override
-	public void processRows(File input) throws Exception {
-		CsvFile reader = CsvFile.parse(input);
+	public void processRows(final Reader input) throws Exception {
+		CsvFile reader = CsvFile.parseReader(input);
 
 		ParsedLines lines = reader.getLines();
 		for (Line line : lines) {
@@ -39,9 +39,9 @@ class WayIoParser extends AbstractParser {
 	}
 
 	@Override
-	public List<String[]> parseRows(File input) throws Exception {
+	public List<String[]> parseRows(final Reader input) throws Exception {
 		List<String[]> rows = new ArrayList<String[]>();
-		CsvFile reader = CsvFile.parse(input);
+		CsvFile reader = CsvFile.parseReader(input);
 
 		ParsedLines lines = reader.getLines();
 

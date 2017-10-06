@@ -25,24 +25,37 @@ import com.univocity.articles.csvcomparison.parser.*;
 public class PerformanceComparison {
 
 	private static final String WORLDCITIES_FILE = "worldcitiespop.txt";
+	private static final String WORLDCITIES_FILE_ENCODING = "ISO-8859-1";
 	private static final String WORLDCITIES_HUGE_FILE = "worldcitiespop_huge.txt";
+	private static final String WORLDCITIES_HUGE_FILE_ENCODING = "ISO-8859-1";
 
 	private final File file;
+	private final String fileEncoding;
 
-	PerformanceComparison(File file) {
+	PerformanceComparison(File file, String fileEncoding) {
 		this.file = file;
+		this.fileEncoding = fileEncoding;
 	}
 
 	private long run(AbstractParser parser) throws Exception {
-		long start = System.currentTimeMillis();
+		Reader reader = null;
+		try {
+			reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), fileEncoding));
 
-		parser.processRows(file);
+			long start = System.currentTimeMillis();
 
-		long time = (System.currentTimeMillis() - start);
-		System.out.println("took " + time + " ms to read " + parser.getRowCount() + " rows. ");
-		parser.resetRowCount();
-		System.setProperty("blackhole", parser.getBlackhole());
-		return time;
+			parser.processRows(reader);
+
+			long time = (System.currentTimeMillis() - start);
+			System.out.println("took " + time + " ms to read " + parser.getRowCount() + " rows. ");
+			parser.resetRowCount();
+			System.setProperty("blackhole", parser.getBlackhole());
+			return time;
+		} finally {
+			if(reader != null) {
+				reader.close();
+			}
+		}
 	}
 
 	private TreeMap<Long, String> orderByAverageTime(int loops, Map<String, Long[]> stats) {
@@ -159,7 +172,7 @@ public class PerformanceComparison {
 			}
 		}
 	
-		new PerformanceComparison(input).execute(loops);
+		new PerformanceComparison(input, WORLDCITIES_FILE_ENCODING).execute(loops);
 
 		final File hugeInput;
 		final URL hugeInputUrl = PerformanceComparison.class.getClassLoader().getResource(WORLDCITIES_HUGE_FILE);
@@ -183,14 +196,14 @@ public class PerformanceComparison {
 		//Now, creates a copy of the original input. All fields enclosed within quotes. 
 		//Overall performance is the similar in percentage terms, regardless of size. No point in melting our CPU's to get the same result.
 		
-		HugeFileGenerator.generateHugeFile(input, 1, hugeInput);
+		HugeFileGenerator.generateHugeFile(input, WORLDCITIES_FILE_ENCODING, 1, hugeInput);
 
 		System.out.println("==================================");
 		System.out.println("=== Processing huge input file ===");
 		System.out.println("==================================");
 
 		
-		new PerformanceComparison(hugeInput).execute(loops);
+		new PerformanceComparison(hugeInput, WORLDCITIES_HUGE_FILE_ENCODING).execute(loops);
 	}
 
 }

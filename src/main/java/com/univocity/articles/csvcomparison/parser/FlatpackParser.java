@@ -27,17 +27,17 @@ class FlatpackParser extends AbstractParser {
 	}
 
 	@Override
-	public void processRows(File input) throws Exception {
+	public void processRows(final Reader input) throws Exception {
 
-		Parser parser = DefaultParserFactory.getInstance().newDelimitedParser(toReader(input), ',', '\n');
+		Parser parser = DefaultParserFactory.getInstance().newDelimitedParser(input, ',', '\n');
 		DataSet dataset = parser.parse();
 		while (process(dataset.next()));
 	}
 
 	@Override
-	public List<String[]> parseRows(File input) throws Exception {
+	public List<String[]> parseRows(final Reader input) throws Exception {
 		List<String[]> rows = new ArrayList<String[]>();
-		Parser parser = DefaultParserFactory.getInstance().newDelimitedParser(toReader(input), ',', '"');
+		Parser parser = DefaultParserFactory.getInstance().newDelimitedParser(input, ',', '"');
 
 		DataSet dataset = parser.parse();
 

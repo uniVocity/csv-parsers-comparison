@@ -27,19 +27,19 @@ class JavaCsvParser extends AbstractParser {
 	}
 
 	@Override
-	public void processRows(File input) throws Exception {
+	public void processRows(final Reader input) throws Exception {
 
-		CsvReader reader = new CsvReader(toReader(input));
+		CsvReader reader = new CsvReader(input);
 		while (reader.readRecord()){
 			process(reader.getValues());
 		}
 	}
 
 	@Override
-	public List<String[]> parseRows(File input) throws Exception {
+	public List<String[]> parseRows(final Reader input) throws Exception {
 		List<String[]> rows = new ArrayList<String[]>();
 
-		CsvReader reader = new CsvReader(toReader(input));
+		CsvReader reader = new CsvReader(input);
 		while (reader.readRecord()) {
 			rows.add(reader.getValues());
 		}

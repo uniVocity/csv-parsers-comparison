@@ -1,7 +1,7 @@
 package com.univocity.articles.csvcomparison.parser;
 
 
-import java.io.File;
+import java.io.Reader;
 import java.util.*;
 
 import org.simpleflatmapper.csv.CsvParser;
@@ -13,17 +13,17 @@ public class SimpleFlatMapperParser extends AbstractParser {
 	}
 
 	@Override
-	public void processRows(final File input) throws Exception {
-		final Iterator<String[]> it = CsvParser.iterator(toReader(input));
+	public void processRows(final Reader input) throws Exception {
+		final Iterator<String[]> it = CsvParser.iterator(input);
 		while(it.hasNext()) {
 			process(it.next());
 		}
 	}
 
 	@Override
-	public List<String[]> parseRows(final File input) throws Exception {
+	public List<String[]> parseRows(final Reader input) throws Exception {
 		final List<String[]> list = new ArrayList<String[]>();
-		final Iterator<String[]> it = CsvParser.iterator(toReader(input));
+		final Iterator<String[]> it = CsvParser.iterator(input);
 		while(it.hasNext()) {
 			list.add(it.next());
 		}
