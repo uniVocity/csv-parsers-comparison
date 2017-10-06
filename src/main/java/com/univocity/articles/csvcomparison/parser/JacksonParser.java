@@ -20,7 +20,7 @@ public class JacksonParser extends AbstractParser {
 		CsvMapper csvMapper = new CsvMapper();
 		csvMapper.enable(CsvParser.Feature.WRAP_AS_ARRAY);
 
-		MappingIterator<String[]> iterator = csvMapper.reader(String[].class).readValues(input);
+		MappingIterator<String[]> iterator = csvMapper.readerFor(String[].class).readValues(input);
 
 		while (iterator.hasNext()) {
 			process(iterator.next());
