@@ -16,12 +16,16 @@
 package com.univocity.articles.csvcomparison;
 
 import java.io.*;
+import java.net.URL;
 import java.util.*;
 import java.util.Map.Entry;
 
 import com.univocity.articles.csvcomparison.parser.*;
 
 public class PerformanceComparison {
+
+	private static final String WORLDCITIES_FILE = "worldcitiespop.txt";
+	private static final String WORLDCITIES_HUGE_FILE = "worldcitiespop_huge.txt";
 
 	private final File file;
 
@@ -139,11 +143,35 @@ public class PerformanceComparison {
 	public static void main(String... args) throws Exception {
 		
 		int loops = 6;
-		File input = new File("src/main/resources/worldcitiespop.txt");
+
+		final File input;
+		final URL inputUrl = PerformanceComparison.class.getClassLoader().getResource(WORLDCITIES_FILE);
+		if(inputUrl != null) {
+			input = new File(inputUrl.toURI());
+		} else {
+			if(args.length > 0) {
+				input = new File(args[0], WORLDCITIES_FILE);
+				if(!input.exists()) {
+					throw new IllegalStateException("Could not find '" + WORLDCITIES_FILE + "' in classpath or in folder: " + args[0]);
+				}
+			} else {
+				throw new IllegalStateException("Could not find '" + WORLDCITIES_FILE + "' in classpath");
+			}
+		}
 	
 		new PerformanceComparison(input).execute(loops);
 
-		File hugeInput = new File("src/main/resources/worldcitiespop_huge.txt");
+		final File hugeInput;
+		final URL hugeInputUrl = PerformanceComparison.class.getClassLoader().getResource(WORLDCITIES_HUGE_FILE);
+		if(hugeInputUrl != null) {
+			hugeInput = new File(hugeInputUrl.toURI());
+		} else {
+			if(args.length > 0) {
+				hugeInput = new File(args[0], WORLDCITIES_HUGE_FILE);
+			} else {
+				throw new IllegalStateException("Could not find '" + WORLDCITIES_HUGE_FILE + "' in classpath or path not specified at arg[0]");
+			}
+		}
 		
 		
 		//executes only if the file has not been generated yet.

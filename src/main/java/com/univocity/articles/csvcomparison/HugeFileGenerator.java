@@ -22,9 +22,8 @@ import com.univocity.parsers.csv.*;
 public class HugeFileGenerator {
 
 	public static void generateHugeFile(File input, int timesToExpand, File hugeFile) throws Exception {
-		File output = new File("src/main/resources/worldcitiespop_huge.txt");
 
-		if (output.exists()) {
+		if (hugeFile.exists()) {
 			System.out.println("Huge file already generated.");
 			return;
 		}
@@ -34,7 +33,7 @@ public class HugeFileGenerator {
 		CsvWriterSettings settings = new CsvWriterSettings();
 		settings.setQuoteAllFields(true); //let's see how all parsers perform when the contents are enclosed within quotes.
 
-		CsvWriter writer = new CsvWriter(new OutputStreamWriter(new FileOutputStream(output), "ISO-8859-1"), settings);
+		CsvWriter writer = new CsvWriter(new OutputStreamWriter(new FileOutputStream(hugeFile), "ISO-8859-1"), settings);
 		long totalTime = 0L;
 		try {
 			Object[] row;

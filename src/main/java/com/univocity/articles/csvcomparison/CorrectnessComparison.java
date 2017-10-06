@@ -16,13 +16,15 @@
 package com.univocity.articles.csvcomparison;
 
 import java.io.*;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.*;
 
 import com.univocity.articles.csvcomparison.parser.*;
 
 public class CorrectnessComparison {
 
-	private static File file = new File("src/main/resources/correctness.csv");
+	private static final String CORRECTNESS_FILE =  "correctness.csv";
 
 	private static String[][] expectedResult = new String[][] {
 		{ "Year", "Make", "Model", "Description", "Price" },
@@ -33,7 +35,7 @@ public class CorrectnessComparison {
 		{ null, null, "Venture \"Extended Edition\"", null, "4900.00" }
 	};
 
-	private static void assertHeadersAndValuesMatch(AbstractParser parser) throws Exception {
+	private static void assertHeadersAndValuesMatch(File file, AbstractParser parser) throws Exception {
 
 		List<String[]> parsedRows = parser.parseRows(file);
 
@@ -61,11 +63,26 @@ public class CorrectnessComparison {
 		}
 	}
 
-	public static void main(String... args) {
+	public static void main(final String... args) throws URISyntaxException {
+
+		final File input;
+		final URL inputUrl = CorrectnessComparison.class.getClassLoader().getResource(CORRECTNESS_FILE);
+		if(inputUrl != null) {
+			input = new File(inputUrl.toURI());
+		} else {
+			if(args.length > 0) {
+				input = new File(args[0], CORRECTNESS_FILE);
+				if(!input.exists()) {
+					throw new IllegalStateException("Could not find '" + CORRECTNESS_FILE + "' in classpath or in folder: " + args[0]);
+				}
+			} else {
+				throw new IllegalStateException("Could not find '" + CORRECTNESS_FILE + "' in classpath");
+			}
+		}
 
 		for (AbstractParser parser : Parsers.list()) {
 			try {
-				assertHeadersAndValuesMatch(parser);
+				assertHeadersAndValuesMatch(input, parser);
 			} catch (Throwable ex) {
 				System.err.println("Parser " + parser.getName() + " threw exception " + ex.getMessage());
 			}
