@@ -219,7 +219,7 @@ $ cd csv-parsers-comparison
 $ wget http://www.maxmind.com/download/worldcities/worldcitiespop.txt.gz
 $ gunzip worldcitiespop.txt.gz
 $ mvn clean package
-$ jar target/csv-parsers-comparison-1.0-uber.jar .
+$ java -jar target/csv-parsers-comparison-1.0-uber.jar .
 ```
 
 NOTE: the `.` at the end of the last command, this tells Java the folder containing the `worldcitiespop.txt`. You can alternatively specify a path to any folder that contains a `worldcitiespop.txt` file.
