@@ -18,7 +18,6 @@ package com.univocity.articles.csvcomparison.parser;
 import java.io.*;
 import java.util.*;
 
-import com.espertech.esperio.*;
 import com.espertech.esperio.csv.*;
 
 class EsperioCsvParser extends AbstractParser {

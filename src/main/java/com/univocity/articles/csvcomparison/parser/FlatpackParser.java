@@ -42,7 +42,7 @@ class FlatpackParser extends AbstractParser {
 		DataSet dataset = parser.parse();
 
 		while (dataset.next()) {
-			Record record = dataset.getRecord();
+			Record record = dataset.getRecord().get();
 			String[] row = new String[record.getColumns().length];
 			int i = 0;
 			for (String column : record.getColumns()) {

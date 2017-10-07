@@ -90,17 +90,15 @@ public class CorrectnessComparison {
 			}
 		}
 
-		for (AbstractParser parser : ParsersRegistry.getParsers()) {
+		for (AbstractParser parser : Parsers.list()) {
 			try {
         System.out.println("try Parser " + parser.getName());
 				assertHeadersAndValuesMatch(input, CORRECTNESS_FILE_ENCODING, parser);
-				assertHeadersAndValuesMatch(parser);
 			} catch (Throwable ex) {
 				System.err.println("Parser " + parser.getName() + " threw exception: " + ex.getMessage());
 			}
 		}
 
 	}
-    
 
 }
