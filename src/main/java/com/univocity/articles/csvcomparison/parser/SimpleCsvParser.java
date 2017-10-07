@@ -27,8 +27,8 @@ class SimpleCsvParser extends AbstractParser {
 	}
 
 	@Override
-	public void processRows(File input) throws Exception {
-		CsvReader reader = new CsvReader(toReader(input));
+	public void processRows(final Reader input) throws Exception {
+		CsvReader reader = new CsvReader(input);
 		try {
 			while (process(reader.readNext()));
 		} finally {
@@ -37,11 +37,11 @@ class SimpleCsvParser extends AbstractParser {
 	}
 
 	@Override
-	public List<String[]> parseRows(File input) throws Exception {
+	public List<String[]> parseRows(final Reader input) throws Exception {
 		List<String[]> rows = new ArrayList<String[]>();
 
 		CsvParser parser = new CsvParserBuilder().escapeChar('"').multiLine(true).separator(',').build();
-		CsvReader reader = new CsvReader(toReader(input), parser);
+		CsvReader reader = new CsvReader(input, parser);
 		try {
 			List<String> row;
 			while ((row = reader.readNext()) != null) {

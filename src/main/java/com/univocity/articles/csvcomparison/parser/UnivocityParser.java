@@ -29,7 +29,7 @@ class UnivocityParser extends AbstractParser {
 	}
 
 	@Override
-	public void processRows(File input) {
+	public void processRows(final Reader input) {
 		CsvParserSettings settings = new CsvParserSettings();
 		
 		//turning off features enabled by default
@@ -46,16 +46,16 @@ class UnivocityParser extends AbstractParser {
 		});
 		
 		CsvParser parser = new CsvParser(settings);
-		parser.parse(toReader(input));
+		parser.parse(input);
 	}
 
 	@Override
-	public List<String[]> parseRows(File input) {
+	public List<String[]> parseRows(final Reader input) {
 
 		CsvParserSettings settings = new CsvParserSettings();
 		CsvParser parser = new CsvParser(settings);
 
-		return parser.parseAll(toReader(input));
+		return parser.parseAll(input);
 	}
 
 }

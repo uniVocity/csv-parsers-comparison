@@ -205,3 +205,21 @@ We will keep working to improve the performance of our parsers, and will update 
 Head on to the [uniVocity-parsers github page](http://github.com/uniVocity/univocity-parsers/) to get access to its source code and documentation. Contributions are welcome.
 
 #### Commercial support is available for your peace of mind. [Click here to learn more.](http://www.univocity.com/products/parsers-support)
+
+## Building and Running
+
+Prerequisites: Git, wget, gunzip, Apache Maven, and Java 1.6+.
+The appropriate CSV parser library version will be chosen depending on your JDK version (i.e. 1.6, 1.7, or 1.8).
+
+If you wish to reproduce our performance results:
+
+```bash
+$ git clone https://github.com/uniVocity/csv-parsers-comparison.git
+$ cd csv-parsers-comparison
+$ wget http://www.maxmind.com/download/worldcities/worldcitiespop.txt.gz
+$ gunzip worldcitiespop.txt.gz
+$ mvn clean package
+$ jar target/csv-parsers-comparison-1.0-uber.jar .
+```
+
+NOTE: the `.` at the end of the last command, this tells Java the folder containing the `worldcitiespop.txt`. You can alternatively specify a path to any folder that contains a `worldcitiespop.txt` file.

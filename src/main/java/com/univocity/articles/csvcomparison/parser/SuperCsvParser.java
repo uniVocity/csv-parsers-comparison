@@ -28,8 +28,8 @@ class SuperCsvParser extends AbstractParser {
 	}
 
 	@Override
-	public void processRows(File input) throws Exception {
-		ICsvListReader listReader = new CsvListReader(toReader(input), CsvPreference.STANDARD_PREFERENCE);
+	public void processRows(final Reader input) throws Exception {
+		ICsvListReader listReader = new CsvListReader(input, CsvPreference.STANDARD_PREFERENCE);
 		try {
 			listReader.getHeader(true);
 			while (process(listReader.read()));
@@ -42,10 +42,10 @@ class SuperCsvParser extends AbstractParser {
 	}
 
 	@Override
-	public List<String[]> parseRows(File input) throws Exception {
+	public List<String[]> parseRows(final Reader input) throws Exception {
 		List<String[]> rows = new ArrayList<String[]>();
 
-		ICsvListReader listReader = new CsvListReader(toReader(input), CsvPreference.STANDARD_PREFERENCE);
+		ICsvListReader listReader = new CsvListReader(input, CsvPreference.STANDARD_PREFERENCE);
 		try {
 			List<String> row = null;
 			while ((row = listReader.read()) != null) {

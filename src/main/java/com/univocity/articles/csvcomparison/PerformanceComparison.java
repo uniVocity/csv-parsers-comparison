@@ -16,6 +16,7 @@
 package com.univocity.articles.csvcomparison;
 
 import java.io.*;
+import java.net.URL;
 import java.util.*;
 import java.util.Map.Entry;
 
@@ -23,22 +24,38 @@ import com.univocity.articles.csvcomparison.parser.*;
 
 public class PerformanceComparison {
 
-	private final File file;
+	private static final String WORLDCITIES_FILE = "worldcitiespop.txt";
+	private static final String WORLDCITIES_FILE_ENCODING = "ISO-8859-1";
+	private static final String WORLDCITIES_HUGE_FILE = "worldcitiespop_huge.txt";
+	private static final String WORLDCITIES_HUGE_FILE_ENCODING = "ISO-8859-1";
 
-	PerformanceComparison(File file) {
+	private final File file;
+	private final String fileEncoding;
+
+	PerformanceComparison(File file, String fileEncoding) {
 		this.file = file;
+		this.fileEncoding = fileEncoding;
 	}
 
 	private long run(AbstractParser parser) throws Exception {
-		long start = System.currentTimeMillis();
+		Reader reader = null;
+		try {
+			reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), fileEncoding));
 
-		parser.processRows(file);
+			long start = System.currentTimeMillis();
 
-		long time = (System.currentTimeMillis() - start);
-		System.out.println("took " + time + " ms to read " + parser.getRowCount() + " rows. ");
-		parser.resetRowCount();
-		System.setProperty("blackhole", parser.getBlackhole());
-		return time;
+			parser.processRows(reader);
+
+			long time = (System.currentTimeMillis() - start);
+			System.out.println("took " + time + " ms to read " + parser.getRowCount() + " rows. ");
+			parser.resetRowCount();
+			System.setProperty("blackhole", parser.getBlackhole());
+			return time;
+		} finally {
+			if(reader != null) {
+				reader.close();
+			}
+		}
 	}
 
 	private TreeMap<Long, String> orderByAverageTime(int loops, Map<String, Long[]> stats) {
@@ -139,11 +156,35 @@ public class PerformanceComparison {
 	public static void main(String... args) throws Exception {
 		
 		int loops = 6;
-		File input = new File("src/main/resources/worldcitiespop.txt");
-	
-		new PerformanceComparison(input).execute(loops);
 
-		File hugeInput = new File("src/main/resources/worldcitiespop_huge.txt");
+		final File input;
+		final URL inputUrl = PerformanceComparison.class.getClassLoader().getResource(WORLDCITIES_FILE);
+		if(inputUrl != null) {
+			input = new File(inputUrl.toURI());
+		} else {
+			if(args.length > 0) {
+				input = new File(args[0], WORLDCITIES_FILE);
+				if(!input.exists()) {
+					throw new IllegalStateException("Could not find '" + WORLDCITIES_FILE + "' in classpath or in folder: " + args[0]);
+				}
+			} else {
+				throw new IllegalStateException("Could not find '" + WORLDCITIES_FILE + "' in classpath, or path not specified as arg[0]");
+			}
+		}
+	
+		new PerformanceComparison(input, WORLDCITIES_FILE_ENCODING).execute(loops);
+
+		final File hugeInput;
+		final URL hugeInputUrl = PerformanceComparison.class.getClassLoader().getResource(WORLDCITIES_HUGE_FILE);
+		if(hugeInputUrl != null) {
+			hugeInput = new File(hugeInputUrl.toURI());
+		} else {
+			if(args.length > 0) {
+				hugeInput = new File(args[0], WORLDCITIES_HUGE_FILE);
+			} else {
+				throw new IllegalStateException("Could not find '" + WORLDCITIES_HUGE_FILE + "' in classpath, or path not specified as arg[0]");
+			}
+		}
 		
 		
 		//executes only if the file has not been generated yet.
@@ -155,14 +196,14 @@ public class PerformanceComparison {
 		//Now, creates a copy of the original input. All fields enclosed within quotes. 
 		//Overall performance is the similar in percentage terms, regardless of size. No point in melting our CPU's to get the same result.
 		
-		HugeFileGenerator.generateHugeFile(input, 1, hugeInput);
+		HugeFileGenerator.generateHugeFile(input, WORLDCITIES_FILE_ENCODING, 1, hugeInput);
 
 		System.out.println("==================================");
 		System.out.println("=== Processing huge input file ===");
 		System.out.println("==================================");
 
 		
-		new PerformanceComparison(hugeInput).execute(loops);
+		new PerformanceComparison(hugeInput, WORLDCITIES_HUGE_FILE_ENCODING).execute(loops);
 	}
 
 }

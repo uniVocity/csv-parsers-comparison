@@ -54,25 +54,9 @@ public abstract class AbstractParser {
 	public String getBlackhole(){
 		return String.valueOf(blackhole);
 	}
-	
-	protected Reader toReader(File input) {
-		try {
-			return new FileReader(input);
-		} catch (FileNotFoundException e) {
-			throw new IllegalStateException(e);
-		}
-	}
 
-	protected Charset getEncoding() {
-		return Charset.forName(getEncodingName());
-	}
+	public abstract void processRows(Reader reader) throws Exception;
 
-	protected String getEncodingName() {
-		return "ISO-8859-1";
-	}
-
-	public abstract void processRows(File input) throws Exception;
-
-	public abstract List<String[]> parseRows(File input) throws Exception;
+	public abstract List<String[]> parseRows(Reader reader) throws Exception;
 
 }
