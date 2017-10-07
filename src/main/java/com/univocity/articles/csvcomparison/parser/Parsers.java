@@ -35,8 +35,8 @@ public class Parsers {
 			new UnivocityParser(),
 			new WayIoParser(),
 			new OsterMillerParser(),
-			new JacksonParser()//,
-			//new SimpleFlatMapperParser()
+			new JacksonParser(),
+			new SimpleFlatMapperParser()
 			);
 
 	private Parsers() {
