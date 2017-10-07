@@ -65,6 +65,30 @@
 					<source>1.6</source>
 					<target>1.6</target>
 				</configuration>
+			    <executions>
+				<execution>
+				    <id>default-compile</id>
+				    <configuration>
+					<excludes>
+					    <exclude>**/parser8/*</exclude>
+					</excludes>
+				    </configuration>
+				</execution>
+				<execution>
+				    <id>java8-compile</id>
+				    <phase>compile</phase>
+				    <goals>
+					<goal>compile</goal>
+				    </goals>
+				    <configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<includes>
+					    <include>**/parser8/*</include>
+					</includes>
+				    </configuration>
+				</execution>
+			    </executions>
 			</plugin>
 
 			<plugin>
@@ -197,6 +221,12 @@
 			<groupId>org.ostermiller</groupId>
 			<artifactId>utils</artifactId>
 			<version>1.07.00</version>
+		</dependency>
+
+		<dependency>
+			<groupId>diergo</groupId>
+			<artifactId>decs</artifactId>
+			<version>3.0.0-RELEASE</version>
 		</dependency>
 	</dependencies>
 </project>
