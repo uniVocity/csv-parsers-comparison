@@ -207,7 +207,7 @@ Head on to the [uniVocity-parsers github page](http://github.com/uniVocity/univo
 
 ## Building and Running
 
-Prerequisites: Git, wget, gunzip, Apache Maven, and Java 1.6+.
+Prerequisites: Git, wget, gunzip, GNU Patch, Apache Maven 3, and Java 1.6+.
 The appropriate CSV parser library version will be chosen depending on your JDK version (i.e. 1.6, 1.7, or 1.8).
 
 If you wish to reproduce our performance results:
