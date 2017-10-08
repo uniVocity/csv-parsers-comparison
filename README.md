@@ -39,6 +39,7 @@ This is the list of all parsers currently tested. Parsers followed by * are comm
 | OsterMiller Utils            |     1.0.6 | [ostermiller.org/utils/CSV.html](http://ostermiller.org/utils/CSV.html)                            |
 | SimpleFlatMapper CSV parser  |  1.0.0rc2 | [github.com/arnaudroger/SimpleFlatMapper](https://github.com/arnaudroger/SimpleFlatMapper)         |
 | Diergo Easy CSV Streamable   |     3.1.0 | [github.com/aburmeis/decs](https://github.com/aburmeis/decs)                                       |
+| Product Collections          |     1.4.5 | [github.com/marklister/product-collections](https://github.com/marklister/product-collections)     |
 
 ## Statistics (updated 28th of November, 2014)
 

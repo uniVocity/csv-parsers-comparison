@@ -36,7 +36,8 @@ public class Parsers {
 			new WayIoParser(),
 			new OsterMillerParser(),
 			new JacksonParser(),
-			new SimpleFlatMapperParser()
+			new SimpleFlatMapperParser(),
+			new ProductCollectionsParser()
 	);
 
 	private Parsers() {
