@@ -13,30 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package com.univocity.articles.csvcomparison.parser;
+package com.univocity.articles.csvcomparison.parser8;
 
-import java.util.*;
+import com.univocity.articles.csvcomparison.parser.*;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class Parsers {
 
 	private static final List<AbstractParser> parsers = Arrays.asList(
-			new CSVeedParser(),
-			new BeanIoParser(),
-			new CommonsCsvParser(),
-			//new DataPipelineCsvParser(), // commercial, depends on license. I can't include on github.
-			new EsperioCsvParser(),
-			//new FlatpackParser(),// appears to hang while processing worldcitiespop.txt & consumes all heap space when parsing a huge file
-			new GenJavaParser(),
-			new JavaCsvParser(),
-			new JCsvParser(),
-			new OpenCsvParser(),
-            new SimpleCsvParser(),
-			new SuperCsvParser(),
-			new UnivocityParser(),
-			new WayIoParser(),
-			new OsterMillerParser(),
-			new JacksonParser(),
-			new SimpleFlatMapperParser()
+		new DecsParser()
 	);
 
 	private Parsers() {
