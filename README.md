@@ -19,27 +19,27 @@ We generate a RFC compliant version to give those sensitive parsers a chance to 
 
 This is the list of all parsers currently tested. Parsers followed by * are commercial an their jars are not included in this project. You have to download them independently:
 
-| Parser                       |   Version | Website                                                                                            |
-|------------------------------|----------:|----------------------------------------------------------------------------------------------------|
-| uniVocity-parsers' CsvParser |     1.3.0 | [www.univocity.com](http://www.univocity.com)                                                      |
-| CSVeed                       |     0.4.0 | [csveed.org](http://csveed.org)                                                                    |
-| Apache Commons CSV           |       1.0 | [commons.apache.org/proper/commons-csv] (http://commons.apache.org/proper/commons-csv)             |
-| OpenCSV                      |       2.3 | [opencsv.sourceforge.net](http://opencsv.sourceforge.net/)                                         |
-| SuperCSV                     |     2.2.0 | [supercsv.sourceforge.net](http://supercsv.sourceforge.net/)                                       |
-| JavaCSV                      |       2.0 | [sourceforge.net/projects/javacsv](http://sourceforge.net/projects/javacsv)                        |
-| jCSV                         |     1.4.0 | [code.google.com/p/jcsv](https://code.google.com/p/jcsv/)                                          |
-| flatpack                     |     3.4.2 | [flatpack.sourceforge.net](http://flatpack.sourceforge.net/)                                       |
-| SimpleCSV                    |       2.0 | [github.com/quux00/simplecsv](https://github.com/quux00/simplecsv)                                 |
-| gj-csv                       |       1.0 | ?                                                                                                  |
-| esperio-csv                  |    4.11.0 | [www.espertech.com](http://www.espertech.com/)                                                     |
-| way-io                       |     1.6.0 | [www.objectos.com.br](http://www.objectos.com.br/)                                                 |
-| beanIO                       |     2.1.0 | [beanio.org](http://beanio.org/)                                                                   |
-| DataPipeline's CSVReader*    |     2.3.5 | [northconcepts.com/data-pipeline/](http://northconcepts.com/data-pipeline/)                        |
-| jackson-dataformat-csv       |     2.4.2 | [github.com/FasterXML/jackson-dataformat-csv](http://github.com/FasterXML/jackson-dataformat-csv)  |
-| OsterMiller Utils            |     1.0.6 | [ostermiller.org/utils/CSV.html](http://ostermiller.org/utils/CSV.html)                            |
-| SimpleFlatMapper CSV parser  |  1.0.0rc2 | [github.com/arnaudroger/SimpleFlatMapper](https://github.com/arnaudroger/SimpleFlatMapper)         |
-| Diergo Easy CSV Streamable   |     3.1.0 | [github.com/aburmeis/decs](https://github.com/aburmeis/decs)                                       |
-| Product Collections          |     1.4.5 | [github.com/marklister/product-collections](https://github.com/marklister/product-collections)     |
+| Parser                       |   Version         | Website                                                                                            |
+|------------------------------|------------------:|----------------------------------------------------------------------------------------------------|
+| uniVocity-parsers' CsvParser |             2.5.6 | [www.univocity.com](http://www.univocity.com)                                                      |
+| CSVeed                       |             0.5.0 | [csveed.org](http://csveed.org)                                                                    |
+| Apache Commons CSV           |           1.4/1.5 | [commons.apache.org/proper/commons-csv] (http://commons.apache.org/proper/commons-csv)             |
+| OpenCSV                      |               4.0 | [opencsv.sourceforge.net](http://opencsv.sourceforge.net/)                                         |
+| SuperCSV                     |             2.4.0 | [supercsv.sourceforge.net](http://supercsv.sourceforge.net/)                                       |
+| JavaCSV                      |               2.0 | [sourceforge.net/projects/javacsv](http://sourceforge.net/projects/javacsv)                        |
+| jCSV                         |             1.4.0 | [code.google.com/p/jcsv](https://code.google.com/p/jcsv/)                                          |
+| flatpack                     |       3.4.2/4.0.1 | [flatpack.sourceforge.net](http://flatpack.sourceforge.net/)                                       |
+| SimpleCSV                    |               2.1 | [github.com/quux00/simplecsv](https://github.com/quux00/simplecsv)                                 |
+| gj-csv                       |               1.0 | ?                                                                                                  |
+| esperio-csv                  |       5.5.0/6.1.0 | [www.espertech.com](http://www.espertech.com/)                                                     |
+| way-io                       |      1.25.0/2.1.0 | [www.objectos.com.br](http://www.objectos.com.br/)                                                 |
+| beanIO                       |             2.1.0 | [beanio.org](http://beanio.org/)                                                                   |
+| DataPipeline's CSVReader*    |             2.3.5 | [northconcepts.com/data-pipeline/](http://northconcepts.com/data-pipeline/)                        |
+| jackson-dataformat-csv       | 2.6.7/2.7.9/2.9.1 | [github.com/FasterXML/jackson-dataformat-csv](http://github.com/FasterXML/jackson-dataformat-csv)  |
+| OsterMiller Utils            |           1.07.00 | [ostermiller.org/utils/CSV.html](http://ostermiller.org/utils/CSV.html)                            |
+| SimpleFlatMapper CSV parser  |            3.13.2 | [github.com/arnaudroger/SimpleFlatMapper](https://github.com/arnaudroger/SimpleFlatMapper)         |
+| Diergo Easy CSV Streamable   |             3.1.0 | [github.com/aburmeis/decs](https://github.com/aburmeis/decs)                                       |
+| Product Collections          |             1.4.5 | [github.com/marklister/product-collections](https://github.com/marklister/product-collections)     |
 
 ## Statistics (updated 28th of November, 2014)
 

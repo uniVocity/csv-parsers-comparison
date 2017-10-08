@@ -195,7 +195,7 @@
 			<version>4.0</version>
 		</dependency>
 
-                <dependency>
+		<dependency>
 			<groupId>com.github.marklister</groupId>
 			<artifactId>product-collections_2.11</artifactId>
 			<version>1.4.2</version>
