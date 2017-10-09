@@ -62,9 +62,23 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.1</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>1.6</source>
+					<target>1.6</target>
 				</configuration>
+				<executions>
+					<execution>
+						<id>default-compile</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+						<configuration>
+							<excludes>
+								<exclude>**/parser8/*</exclude>
+							</excludes>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 
 			<plugin>
@@ -181,7 +195,7 @@
 			<version>4.0</version>
 		</dependency>
 
-                <dependency>
+		<dependency>
 			<groupId>com.github.marklister</groupId>
 			<artifactId>product-collections_2.11</artifactId>
 			<version>1.4.2</version>
@@ -234,6 +248,13 @@
 			<artifactId>utils</artifactId>
 			<version>1.07.00</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.github.marklister</groupId>
+			<artifactId>product-collections_2.11</artifactId>
+			<version>1.4.5</version>
+		</dependency>
+
 	</dependencies>
 
 	<profiles>
@@ -319,6 +340,12 @@
 					<version>6.1.0</version>
 				</dependency>
 
+				<dependency>
+					<groupId>diergo</groupId>
+					<artifactId>decs</artifactId>
+					<version>3.1.0-RELEASE</version>
+				</dependency>
+
 			</dependencies>
 
 			<build>
@@ -345,8 +372,45 @@
 							</execution>
 						</executions>
 					</plugin>
+
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<version>3.1</version>
+						<executions>
+							<execution>
+								<id>parsers8-compile</id>
+								<phase>compile</phase>
+								<goals>
+									<goal>compile</goal>
+								</goals>
+								<configuration>
+									<source>1.8</source>
+									<target>1.8</target>
+									<includes>
+										<include>**/parser8/*</include>
+									</includes>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+
 				</plugins>
 			</build>
+
+			<repositories>
+
+				<!-- needed for diergo decs -->
+				<repository>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+					<id>central</id>
+					<name>bintray</name>
+					<url>https://jcenter.bintray.com</url>
+				</repository>
+
+			</repositories>
 
 		</profile>
 

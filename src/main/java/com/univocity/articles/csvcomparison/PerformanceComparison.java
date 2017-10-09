@@ -129,14 +129,14 @@ public class PerformanceComparison {
 	public void execute(final int loops) throws Exception {
 		Map<String, Long[]> stats = new HashMap<String, Long[]>();
 
-		for (AbstractParser parser : Parsers.list()) {
+		for (final AbstractParser parser : ParsersRegistry.getParsers()) {
 			Long[] times = new Long[loops];
 			Arrays.fill(times, -1L);
 			stats.put(parser.getName(), times);
 		}
 
 		for (int i = 0; i < loops; i++) {
-			for (AbstractParser parser : Parsers.list()) {
+			for (final AbstractParser parser : ParsersRegistry.getParsers()) {
 				try {
 					System.out.print("Loop " + (i + 1) + " - executing " + parser.getName() + "... ");
 					long time = run(parser);
