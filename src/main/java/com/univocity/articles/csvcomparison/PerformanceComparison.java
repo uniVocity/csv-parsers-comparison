@@ -180,16 +180,20 @@ public class PerformanceComparison {
 
 		new PerformanceComparison(input, WORLDCITIES_FILE_ENCODING).execute(loops);
 
-		final File hugeInput;
+		File hugeInput = null;
 		final URL hugeInputUrl = PerformanceComparison.class.getClassLoader().getResource(WORLDCITIES_HUGE_FILE);
 		if (hugeInputUrl != null) {
-			hugeInput = new File(hugeInputUrl.toURI());
-		} else {
-			if (args.length > 0) {
-				hugeInput = new File(args[0], WORLDCITIES_HUGE_FILE);
-			} else {
-				throw new IllegalStateException("Could not find '" + WORLDCITIES_HUGE_FILE + "' in classpath, or path not specified as arg[0]");
+			try {
+				hugeInput = new File(hugeInputUrl.toURI());
+			} catch (Exception ex) {
+				System.err.println("Error reading file from " + inputUrl + ": " + ex.getMessage());
 			}
+		}
+
+		if (hugeInput == null && args.length > 0) {
+			hugeInput = new File(args[0], WORLDCITIES_HUGE_FILE);
+		} else {
+			throw new IllegalStateException("Could not find '" + WORLDCITIES_HUGE_FILE + "' in classpath, or path not specified as arg[0]");
 		}
 
 
