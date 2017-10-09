@@ -52,7 +52,7 @@ public class PerformanceComparison {
 			System.setProperty("blackhole", parser.getBlackhole());
 			return time;
 		} finally {
-			if(reader != null) {
+			if (reader != null) {
 				reader.close();
 			}
 		}
@@ -104,7 +104,7 @@ public class PerformanceComparison {
 			long time = average.getKey();
 			String parser = average.getValue();
 			System.out.print("| " + parser + " \t | " + time + " ms ");
-			
+
 			if (time == -1) {
 				System.out.println("Could not execute");
 				continue;
@@ -113,7 +113,7 @@ public class PerformanceComparison {
 			if (bestTime != 0) {
 				long increasePercentage = time * 100 / bestTime - 100;
 				System.out.print(" \t | " + increasePercentage + "% ");
-			} else{
+			} else {
 				bestTime = time;
 				System.out.print(" \t | Best time! ");
 			}
@@ -122,7 +122,7 @@ public class PerformanceComparison {
 			long worst = getWorstTime(stats.get(parser));
 
 			System.out.println(" \t | " + best + " ms \t | " + worst + " ms |");
-			
+
 		}
 	}
 
@@ -154,55 +154,61 @@ public class PerformanceComparison {
 	}
 
 	public static void main(String... args) throws Exception {
-		
+
 		int loops = 6;
 
-		final File input;
+		File input = null;
 		final URL inputUrl = PerformanceComparison.class.getClassLoader().getResource(WORLDCITIES_FILE);
-		if(inputUrl != null) {
-			input = new File(inputUrl.toURI());
-		} else {
-			if(args.length > 0) {
-				input = new File(args[0], WORLDCITIES_FILE);
-				if(!input.exists()) {
-					throw new IllegalStateException("Could not find '" + WORLDCITIES_FILE + "' in classpath or in folder: " + args[0]);
-				}
-			} else {
-				throw new IllegalStateException("Could not find '" + WORLDCITIES_FILE + "' in classpath, or path not specified as arg[0]");
+
+		if (inputUrl != null) {
+			try {
+				input = new File(inputUrl.toURI());
+			} catch (Exception ex) {
+				System.err.println("Error reading file from " + inputUrl + ": " + ex.getMessage());
 			}
 		}
-	
+
+		if (input == null && args.length > 0) {
+			input = new File(args[0], WORLDCITIES_FILE);
+			if (!input.exists()) {
+				throw new IllegalStateException("Could not find '" + WORLDCITIES_FILE + "' in classpath or in folder: " + args[0]);
+			}
+		} else {
+			throw new IllegalStateException("Could not find '" + WORLDCITIES_FILE + "' in classpath, or path not specified as arg[0]");
+		}
+
+
 		new PerformanceComparison(input, WORLDCITIES_FILE_ENCODING).execute(loops);
 
 		final File hugeInput;
 		final URL hugeInputUrl = PerformanceComparison.class.getClassLoader().getResource(WORLDCITIES_HUGE_FILE);
-		if(hugeInputUrl != null) {
+		if (hugeInputUrl != null) {
 			hugeInput = new File(hugeInputUrl.toURI());
 		} else {
-			if(args.length > 0) {
+			if (args.length > 0) {
 				hugeInput = new File(args[0], WORLDCITIES_HUGE_FILE);
 			} else {
 				throw new IllegalStateException("Could not find '" + WORLDCITIES_HUGE_FILE + "' in classpath, or path not specified as arg[0]");
 			}
 		}
-		
-		
+
+
 		//executes only if the file has not been generated yet.
-		
-		
+
+
 		//Previously, we created a huge file with the original input, replicated 15 times. All fields enclosed within quotes.
 		//It would generate a file with 47,609,385 rows
-		
+
 		//Now, creates a copy of the original input. All fields enclosed within quotes. 
 		//Overall performance is the similar in percentage terms, regardless of size. No point in melting our CPU's to get the same result.
-		
+
 		HugeFileGenerator.generateHugeFile(input, WORLDCITIES_FILE_ENCODING, 1, hugeInput);
 
 		System.out.println("==================================");
 		System.out.println("=== Processing huge input file ===");
 		System.out.println("==================================");
 
-		
+
 		new PerformanceComparison(hugeInput, WORLDCITIES_HUGE_FILE_ENCODING).execute(loops);
 	}
 
