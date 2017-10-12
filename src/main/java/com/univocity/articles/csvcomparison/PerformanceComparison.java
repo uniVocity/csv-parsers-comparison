@@ -168,13 +168,15 @@ public class PerformanceComparison {
 			}
 		}
 
-		if (input == null && args.length > 0) {
-			input = new File(args[0], WORLDCITIES_FILE);
-			if (!input.exists()) {
-				throw new IllegalStateException("Could not find '" + WORLDCITIES_FILE + "' in classpath or in folder: " + args[0]);
+		if (input == null) {
+			if (args.length > 0) {
+				input = new File(args[0], WORLDCITIES_FILE);
+				if (!input.exists()) {
+					throw new IllegalStateException("Could not find '" + WORLDCITIES_FILE + "' in classpath or in folder: " + args[0]);
+				}
+			} else {
+				throw new IllegalStateException("Could not find '" + WORLDCITIES_FILE + "' in classpath, or path not specified as arg[0]");
 			}
-		} else {
-			throw new IllegalStateException("Could not find '" + WORLDCITIES_FILE + "' in classpath, or path not specified as arg[0]");
 		}
 
 
@@ -190,10 +192,12 @@ public class PerformanceComparison {
 			}
 		}
 
-		if (hugeInput == null && args.length > 0) {
-			hugeInput = new File(args[0], WORLDCITIES_HUGE_FILE);
-		} else {
-			throw new IllegalStateException("Could not find '" + WORLDCITIES_HUGE_FILE + "' in classpath, or path not specified as arg[0]");
+		if (hugeInput == null) {
+			if (args.length > 0) {
+				hugeInput = new File(args[0], WORLDCITIES_HUGE_FILE);
+			} else {
+				throw new IllegalStateException("Could not find '" + WORLDCITIES_HUGE_FILE + "' in classpath, or path not specified as arg[0]");
+			}
 		}
 
 
