@@ -33,12 +33,13 @@ class UnivocityParser extends AbstractParser {
 		CsvParserSettings settings = new CsvParserSettings();
 		
 		//turning off features enabled by default
+		settings.getFormat().setLineSeparator("\n");
 		settings.setIgnoreLeadingWhitespaces(false);
 		settings.setIgnoreTrailingWhitespaces(false);
 		settings.setSkipEmptyLines(false);
 		settings.setColumnReorderingEnabled(false);
 
-		settings.setRowProcessor(new AbstractRowProcessor() {
+		settings.setProcessor(new AbstractRowProcessor() {
 			@Override
 			public void rowProcessed(String[] row, ParsingContext context) {
 				process(row);
@@ -53,6 +54,7 @@ class UnivocityParser extends AbstractParser {
 	public List<String[]> parseRows(final Reader input) {
 
 		CsvParserSettings settings = new CsvParserSettings();
+		settings.getFormat().setLineSeparator("\n");
 		CsvParser parser = new CsvParser(settings);
 
 		return parser.parseAll(input);
