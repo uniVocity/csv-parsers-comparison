@@ -28,10 +28,13 @@ public class HugeFileGenerator {
 			return;
 		}
 
-		CsvParser parser = new CsvParser(new CsvParserSettings());
+		CsvParserSettings readerSettings = new CsvParserSettings();
+		readerSettings.getFormat().setLineSeparator("\n");
+		CsvParser parser = new CsvParser(readerSettings);
 
 		CsvWriterSettings settings = new CsvWriterSettings();
 		settings.setQuoteAllFields(true); //let's see how all parsers perform when the contents are enclosed within quotes.
+    settings.getFormat().setLineSeparator("\n");
 
 		CsvWriter writer = new CsvWriter(new BufferedWriter(new OutputStreamWriter(new FileOutputStream(hugeFile), inputEncoding)), settings);
 		long totalTime = 0L;

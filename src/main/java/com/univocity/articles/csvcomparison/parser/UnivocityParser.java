@@ -31,7 +31,8 @@ class UnivocityParser extends AbstractParser {
 	@Override
 	public void processRows(final Reader input) {
 		CsvParserSettings settings = new CsvParserSettings();
-		
+		settings.getFormat().setLineSeparator("\n");
+
 		//turning off features enabled by default
 		settings.getFormat().setLineSeparator("\n");
 		settings.setIgnoreLeadingWhitespaces(false);
