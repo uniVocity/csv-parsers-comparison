@@ -350,6 +350,12 @@
 					<version>3.1.0-RELEASE</version>
 				</dependency>
 
+				<dependency>
+					<groupId>com.github.mneri</groupId>
+					<artifactId>csv</artifactId>
+					<version>1.1</version>
+				</dependency>
+
 			</dependencies>
 
 			<build>
@@ -412,6 +418,12 @@
 					<id>central</id>
 					<name>bintray</name>
 					<url>https://jcenter.bintray.com</url>
+				</repository>
+
+				<!-- Needed for mneri/csv -->
+				<repository>
+					<id>jitpack.io</id>
+					<url>https://jitpack.io</url>
 				</repository>
 
 			</repositories>
