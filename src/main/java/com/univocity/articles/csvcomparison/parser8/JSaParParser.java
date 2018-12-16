@@ -35,9 +35,7 @@ public class JSaParParser extends AbstractParser {
 
     @Override
     public void processRows(Reader reader) throws Exception {
-        textParser.parse(reader, event -> {
-            //Do nothing.
-        });
+        textParser.parse(reader, event -> process(event.getLine()));
     }
 
     @Override
