@@ -20,23 +20,23 @@ import java.util.*;
 public class Parsers {
 
 	private static final List<AbstractParser> parsers = Arrays.asList(
-//			new CSVeedParser(),
-//			new BeanIoParser(),
+			new CSVeedParser(),
+			new BeanIoParser(),
 			new CommonsCsvParser(),
-			//new DataPipelineCsvParser(), // commercial, depends on license. I can't include on github.
-//			new EsperioCsvParser(),
+//			new DataPipelineCsvParser(), // commercial, depends on license. I can't include on github.
+			new EsperioCsvParser(),
 			//new FlatpackParser(),// appears to hang while processing worldcitiespop.txt & consumes all heap space when parsing a huge file
-//			new GenJavaParser(),
-//			new JavaCsvParser(),
-//			new JCsvParser(),
-//			new OpenCsvParser(),
-//            new SimpleCsvParser(),
-//			new SuperCsvParser(),
-//			new UnivocityParser(),
-//			new WayIoParser(),
-//			new OsterMillerParser(),
-//			new JacksonParser(),
-//			new SimpleFlatMapperParser(),
+			new GenJavaParser(),
+			new JavaCsvParser(),
+			new JCsvParser(),
+			new OpenCsvParser(),
+            new SimpleCsvParser(),
+			new SuperCsvParser(),
+			new UnivocityParser(),
+			new WayIoParser(),
+			new OsterMillerParser(),
+			new JacksonParser(),
+			new SimpleFlatMapperParser(),
 			new ProductCollectionsParser()
 	);
 
@@ -44,6 +44,7 @@ public class Parsers {
 	}
 
 	public static List<AbstractParser> list() {
-		return Collections.unmodifiableList(parsers);
+		return Collections.emptyList();
+//		return Collections.unmodifiableList(parsers);
 	}
 }

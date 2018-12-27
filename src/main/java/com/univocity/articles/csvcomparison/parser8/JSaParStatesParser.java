@@ -1,15 +1,15 @@
 package com.univocity.articles.csvcomparison.parser8;
 
 import com.univocity.articles.csvcomparison.parser.AbstractParser;
-import org.jsapar.parse.csv.CsvLineReader;
+import org.jsapar.parse.csv.states.CsvLineReader;
 
 import java.io.Reader;
 import java.util.List;
 
-public class JSaParInternalParser extends AbstractParser {
+public class JSaParStatesParser extends AbstractParser {
 
-    protected JSaParInternalParser() {
-        super("JSaPar internal");
+    protected JSaParStatesParser() {
+        super("JSaPar states internal");
     }
 
     @Override
