@@ -70,7 +70,7 @@ This is the list of all parsers currently tested.
 | jackson-dataformat-csv       | 2.6.7/2.7.9/2.9.4 | [github.com/FasterXML/jackson-dataformat-csv](http://github.com/FasterXML/jackson-dataformat-csv)  |
 | OsterMiller Utils            |           1.07.00 | [ostermiller.org/utils/CSV.html](http://ostermiller.org/utils/CSV.html)                            |
 | SimpleFlatMapper CSV parser  |            3.15.9 | [github.com/arnaudroger/SimpleFlatMapper](https://github.com/arnaudroger/SimpleFlatMapper)         |
-| Diergo Easy CSV Streamable   |             3.1.0 | [github.com/aburmeis/decs](https://github.com/aburmeis/decs)                                       |
+| Diergo Easy CSV Streamable   |             3.1.1 | [github.com/aburmeis/decs](https://github.com/aburmeis/decs)                                       |
 | Product Collections          |             1.4.5 | [github.com/marklister/product-collections](https://github.com/marklister/product-collections)     |
 
 ## Statistics (updated 28th of February, 2018)
