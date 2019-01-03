@@ -2,6 +2,7 @@ package com.univocity.articles.csvcomparison.parser8;
 
 import com.univocity.articles.csvcomparison.parser.AbstractParser;
 import org.jsapar.parse.csv.CsvLineReader;
+import org.jsapar.parse.csv.states.CsvLineReaderStates;
 
 import java.io.Reader;
 import java.util.List;
@@ -14,7 +15,7 @@ public class JSaParInternalParser extends AbstractParser {
 
     @Override
     public void processRows(Reader reader) throws Exception {
-        CsvLineReader lineReader = new CsvLineReader("\n", reader);
+        CsvLineReader lineReader = new CsvLineReaderStates("\n", reader, true);
         List<String> line=null;
         do{
             line = lineReader.readLine(",", '"');
