@@ -134,7 +134,7 @@ public class PerformanceComparison {
 			Arrays.fill(times, -1L);
 			stats.put(parser.getName(), times);
 		}
-		System.gc();
+
 		for (int i = 0; i < loops; i++) {
 			for (final AbstractParser parser : ParsersRegistry.getParsers()) {
 				try {
@@ -155,7 +155,7 @@ public class PerformanceComparison {
 
 	public static void main(String... args) throws Exception {
 
-		int loops = 3;
+		int loops = 6;
 
 		File input = null;
 		final URL inputUrl = PerformanceComparison.class.getClassLoader().getResource(WORLDCITIES_FILE);
@@ -179,10 +179,8 @@ public class PerformanceComparison {
 			}
 		}
 
-/*
 
 		new PerformanceComparison(input, WORLDCITIES_FILE_ENCODING).execute(loops);
-*/
 
 		File hugeInput = null;
 		final URL hugeInputUrl = PerformanceComparison.class.getClassLoader().getResource(WORLDCITIES_HUGE_FILE);

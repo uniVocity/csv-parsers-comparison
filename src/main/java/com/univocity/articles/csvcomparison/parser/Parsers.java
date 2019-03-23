@@ -23,7 +23,7 @@ public class Parsers {
 			new CSVeedParser(),
 			new BeanIoParser(),
 			new CommonsCsvParser(),
-//			new DataPipelineCsvParser(), // commercial, depends on license. I can't include on github.
+			//new DataPipelineCsvParser(), // commercial, depends on license. I can't include on github.
 			new EsperioCsvParser(),
 			//new FlatpackParser(),// appears to hang while processing worldcitiespop.txt & consumes all heap space when parsing a huge file
 			new GenJavaParser(),
@@ -44,7 +44,6 @@ public class Parsers {
 	}
 
 	public static List<AbstractParser> list() {
-		return Collections.emptyList();
-//		return Collections.unmodifiableList(parsers);
+		return Collections.unmodifiableList(parsers);
 	}
 }
