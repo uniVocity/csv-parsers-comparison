@@ -299,7 +299,7 @@
 		<profile>
 			<id>jdk1.8</id>
 			<activation>
-				<jdk>1.8</jdk>
+				<jdk>[1.8,)</jdk>
 			</activation>
 			<dependencies>
 
@@ -350,6 +350,11 @@
 					<version>3.1.0-RELEASE</version>
 				</dependency>
 
+				<dependency>
+					<groupId>org.tigris.jsapar</groupId>
+					<artifactId>jsapar</artifactId>
+					<version>2.0.1</version>
+				</dependency>
 			</dependencies>
 
 			<build>
