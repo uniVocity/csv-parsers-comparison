@@ -54,7 +54,7 @@ This is an alphabetical list of all parsers currently tested.
 
 | Parser                       |   Version         | Website                                                                                            |
 |------------------------------|------------------:|----------------------------------------------------------------------------------------------------|
-| Apache Commons CSV           |           1.4/1.5 | [commons.apache.org/proper/commons-csv] (http://commons.apache.org/proper/commons-csv)             |
+| Apache Commons CSV           |           1.4/1.5 | [commons.apache.org/proper/commons-csv](http://commons.apache.org/proper/commons-csv)             |
 | beanIO                       |             2.1.0 | [beanio.org](http://beanio.org/)                                                                   |
 | CSVeed                       |             0.5.0 | [csveed.org](http://csveed.org)                                                                    |
 | Diergo Easy CSV Streamable   |             3.1.0 | [github.com/aburmeis/decs](https://github.com/aburmeis/decs)                                       |
