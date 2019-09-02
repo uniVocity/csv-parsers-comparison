@@ -350,33 +350,16 @@
 					<version>3.1.0-RELEASE</version>
 				</dependency>
 
+				<dependency>
+				    <groupId>com.github.skjolber.sesseltjonna-csv</groupId>
+				    <artifactId>parser</artifactId>
+				    <version>1.0.17</version>
+				</dependency>
+
 			</dependencies>
 
 			<build>
 				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-patch-plugin</artifactId>
-						<version>1.2</version>
-						<configuration>
-
-							<!-- patches required for API changes in newer libraries -->
-
-							<patches>
-								<patch>esperio-csv-6.x.patch</patch>
-								<patch>flatpack-4.x.patch</patch>
-							</patches>
-						</configuration>
-						<executions>
-							<execution>
-								<id>patch</id>
-								<goals>
-									<goal>apply</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-compiler-plugin</artifactId>
