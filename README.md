@@ -56,7 +56,7 @@ This is the list of all parsers currently tested.
 |------------------------------|------------------:|----------------------------------------------------------------------------------------------------|
 | uniVocity-parsers' CsvParser |             2.6.0 | [www.univocity.com](http://www.univocity.com)                                                      |
 | CSVeed                       |             0.5.0 | [csveed.org](http://csveed.org)                                                                    |
-| Apache Commons CSV           |           1.4/1.5 | [commons.apache.org/proper/commons-csv] (http://commons.apache.org/proper/commons-csv)             |
+| Apache Commons CSV           |           1.4/1.5 | [commons.apache.org/proper/commons-csv](http://commons.apache.org/proper/commons-csv)             |
 | OpenCSV                      |               4.1 | [opencsv.sourceforge.net](http://opencsv.sourceforge.net/)                                         |
 | SuperCSV                     |             2.4.0 | [supercsv.sourceforge.net](http://supercsv.sourceforge.net/)                                       |
 | JavaCSV                      |               2.0 | [sourceforge.net/projects/javacsv](http://sourceforge.net/projects/javacsv)                        |
